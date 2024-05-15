@@ -104,29 +104,43 @@ namespace WebApplication1.admin
                     img5.SaveAs(path5 + filename5);
                 }
 
-                Product p = new Product
-                {
-                    prodName = name,
-                    prodDesc = desc,
-                    prodColor = color,
-                    prodPrice = price,
-                    prodQty = qty,
-                    prodSize = size,
-                    prodImg1 = filename1,
-                    prodImg2 = filename2,
-                    prodImg3 = filename3,
-                    prodImg4 = filename4,
-                    prodImg5 = filename5,
-                    catID = cat
-                };
+                // Check if the product already exists
+                var existingProduct = db.Products
+                    .FirstOrDefault(p => p.prodName == name && p.prodSize == size && p.catID == cat);
 
-                db.Products.Add(p);
-                db.SaveChanges();
+                if (existingProduct != null)
+                {
+                    // If the product exists, update its quantity
+                    existingProduct.prodQty += qty;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    // If the product doesn't exist, create a new product
+                    Product p = new Product
+                    {
+                        prodName = name,
+                        prodDesc = desc,
+                        prodColor = color,
+                        prodPrice = price,
+                        prodQty = qty,
+                        prodSize = size,
+                        prodImg1 = filename1,
+                        prodImg2 = filename2,
+                        prodImg3 = filename3,
+                        prodImg4 = filename4,
+                        prodImg5 = filename5,
+                        catID = cat
+                    };
+
+                    db.Products.Add(p);
+                    db.SaveChanges();
+                }
 
                 Response.Redirect("ProductAdmin.aspx");
-
             }
         }
+
 
         protected void btnReset_Click(object sender, EventArgs e)
         {

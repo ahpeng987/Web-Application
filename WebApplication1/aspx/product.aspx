@@ -175,9 +175,10 @@
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href='<%# string.Format("prodDetail.aspx?prodID={0}&prodName={1}&prodColor={2}&catName={3}", Eval("prodID"), Eval("prodName"), Eval("prodColor"), Eval("catName")) %>' class="btn btn-sm text-dark p-0">
+                                        <a href='<%# string.Format("prodDetail.aspx?prodID={0}&prodName={1}&prodColor={2}&catName={3}&prodQty={4}", Eval("prodID"), Eval("prodName"), Eval("prodColor"), Eval("catName"), Eval("prodQty")) %>' class="btn btn-sm text-dark p-0">
                                             <i class="fas fa-eye text-primary mr-1"></i>View Detail
                                         </a>
+
 
                                     </div>
                                 </div>

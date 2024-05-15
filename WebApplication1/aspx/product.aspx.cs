@@ -47,7 +47,7 @@ namespace WebApplication1.aspx
             {
                 using (SqlConnection con = new SqlConnection(cs))
                 {
-                    string query = "SELECT p.prodID, p.prodImg1, p.prodName, p.prodPrice, p.prodColor, c.catName, c.catID FROM Product p INNER JOIN ProductCategory c ON p.catID = c.catID";
+                    string query = "SELECT p.prodID, p.prodImg1, p.prodName, p.prodPrice, p.prodColor, p.prodQty, c.catName, c.catID FROM Product p INNER JOIN ProductCategory c ON p.catID = c.catID WHERE p.prodQty > 0";
                     SqlCommand cmd = new SqlCommand(query, con);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

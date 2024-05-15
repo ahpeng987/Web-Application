@@ -150,64 +150,72 @@
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <%-- Product Name --%>
+                                                    <asp:Label ID="Label1" runat="server" Text="Product Name:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-product-hunt" aria-hidden="true"></i></span>
                                                         <asp:TextBox ID="txtProdName" runat="server" CssClass="form-control" MaxLength="50" placeholder="Product Name"></asp:TextBox>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvProdName" runat="server" ErrorMessage="Please enter [Product Name]. " ControlToValidate="txtProdName" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvProdName" runat="server" ErrorMessage="Please enter [Product Name] " ControlToValidate="txtProdName" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <%-- Product Color --%>
+                                                    <asp:Label ID="Label2" runat="server" Text="Product Color:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
                                                         <asp:TextBox ID="txtColor" runat="server" CssClass="form-control" MaxLength="20" placeholder="Color"></asp:TextBox>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvColor" runat="server" ErrorMessage="Please enter [Product Color]. " ControlToValidate="txtColor" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                        <asp:RegularExpressionValidator ID="revColor" runat="server" ErrorMessage="Please enter alphabets only. " ControlToValidate="txtColor" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvColor" runat="server" ErrorMessage="Please enter [Product Color] " ControlToValidate="txtColor" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="revColor" runat="server" ErrorMessage="Please enter alphabets only " ControlToValidate="txtColor" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$" Display="Dynamic"></asp:RegularExpressionValidator>
                                                     </div>
                                                     <%-- Product Quantity --%>
+                                                    <asp:Label ID="Label3" runat="server" Text="Product Quantity:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-line-chart" aria-hidden="true"></i></span>
                                                         <asp:TextBox ID="txtQty" runat="server" CssClass="form-control" MaxLength="20" placeholder="Quantity"></asp:TextBox>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvQty" runat="server" ErrorMessage="Please enter [Product Quantity]. " ControlToValidate="txtQty" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                        <asp:RangeValidator ID="rvQty" runat="server" ErrorMessage="Min Quantity = 1 & Max Quantity = 100. " MinimumValue="1" MaximumValue="100" Type="Integer" ControlToValidate="txtQty" ForeColor="Red"></asp:RangeValidator>
-                                                        <asp:CompareValidator ID="cvQty" runat="server" ErrorMessage="Please enter valid Quantity. " ControlToValidate="txtQty" Operator="DataTypeCheck" Type="Integer" ForeColor="Red"></asp:CompareValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvQty" runat="server" ErrorMessage="Please enter [Product Quantity] " ControlToValidate="txtQty" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RangeValidator ID="rvQty" runat="server" ErrorMessage="Please enter quantity range from 1 to 100 only " MinimumValue="1" MaximumValue="100" Type="Integer" ControlToValidate="txtQty" ForeColor="Red"></asp:RangeValidator>
+                                                        <asp:CompareValidator ID="cvQty" runat="server" ErrorMessage="Please enter valid quantity " ControlToValidate="txtQty" Operator="DataTypeCheck" Type="Integer" ForeColor="Red"></asp:CompareValidator>
                                                     </div>
                                                     <%-- Product Price --%>
+                                                    <asp:Label ID="Label4" runat="server" Text="Product Unit Price (RM):" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" MaxLength="20" placeholder="Unit Price (RM)"></asp:TextBox>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvPrice" runat="server" ErrorMessage="Please enter [Product Unit Price (RM)]. " ControlToValidate="txtPrice" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                        <asp:CompareValidator ID="cvPrice" runat="server" ErrorMessage="Please enter valid Price (RM). " ControlToValidate="txtPrice" Operator="DataTypeCheck" Type="Double" ForeColor="Red"></asp:CompareValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvPrice" runat="server" ErrorMessage="Please enter [Product Unit Price (RM)] " ControlToValidate="txtPrice" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RangeValidator ID="rvPrice" runat="server" ErrorMessage="Please enter price range RM 10 - 10,000 only " MinimumValue="10" MaximumValue="10000" Type="Double" ForeColor="Red" ControlToValidate="txtPrice"></asp:RangeValidator>
+                                                        <asp:CompareValidator ID="cvPrice" runat="server" ErrorMessage="Please enter valid Price (RM) " ControlToValidate="txtPrice" Operator="DataTypeCheck" Type="Double" ForeColor="Red"></asp:CompareValidator>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <%-- Product Description --%>
+                                                    <asp:Label ID="Label5" runat="server" Text="Product Description:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                                                         <asp:TextBox ID="txtDesc" runat="server" CssClass="form-control" MaxLength="1000" placeholder="Product Description"></asp:TextBox>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvDesc" runat="server" ErrorMessage="Please enter [Product Description]. " ControlToValidate="txtDesc" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvDesc" runat="server" ErrorMessage="Please enter [Product Description] " ControlToValidate="txtDesc" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <%-- Product Size --%>
+                                                    <asp:Label ID="Label6" runat="server" Text="Product Size (UK):" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-plus-square-o" aria-hidden="true"></i></span>
                                                         <asp:TextBox ID="txtSize" runat="server" CssClass="form-control" MaxLength="10" placeholder="Size (UK)"></asp:TextBox>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvSize" runat="server" ErrorMessage="Please enter [Product Size in (UK)]. " ControlToValidate="txtSize" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                        <asp:RangeValidator ID="rvSize" runat="server" ErrorMessage="Please enter size range from 3 to 15 only. " MinimumValue="3" MaximumValue="15" Type="Double" ControlToValidate="txtSize" ForeColor="Red"></asp:RangeValidator>
-                                                        <asp:CompareValidator ID="cvSize" runat="server" Operator="DataTypeCheck" Type="Double" ControlToValidate="txtSize" ErrorMessage="Size must be a digit. " ForeColor="Red"></asp:CompareValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvSize" runat="server" ErrorMessage="Please enter [Product Size in (UK)] " ControlToValidate="txtSize" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RangeValidator ID="rvSize" runat="server" ErrorMessage="Please enter size range from 3 to 15 only " MinimumValue="3" MaximumValue="15" Type="Double" ControlToValidate="txtSize" ForeColor="Red"></asp:RangeValidator>
+                                                        <asp:CompareValidator ID="cvSize" runat="server" Operator="DataTypeCheck" Type="Double" ControlToValidate="txtSize" ErrorMessage="Please enter a valid Size (UK) " ForeColor="Red"></asp:CompareValidator>
                                                     </div>
                                                     <%-- Product Category --%>
+                                                    <asp:Label ID="Label7" runat="server" Text="Product Category:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-object-group" aria-hidden="true"></i></span>
                                                         <asp:DropDownList ID="ddlCat" runat="server" CssClass="form-control">
@@ -218,48 +226,53 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvCat" runat="server" ErrorMessage="Please select a category. " ControlToValidate="ddlCat" InitialValue="0" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvCat" runat="server" ErrorMessage="Please select a [Category] " ControlToValidate="ddlCat" InitialValue="0" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <%-- Product Image 1 --%>
+                                                    <asp:Label ID="Label8" runat="server" Text="Product Image 1:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                                         <asp:FileUpload ID="fupProd1" runat="server" ForeColor="White" CssClass="form-control" />
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RequiredFieldValidator ID="rfvProd1" runat="server" ErrorMessage="Please upload at least 1 [Photo]. " ControlToValidate="fupProd1" CssClass="" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                        <asp:RegularExpressionValidator ID="revProd1" runat="server" ControlToValidate="fupProd1" CssClass="" Display="Dynamic" ErrorMessage="Only JPG and PNG are allowed for [Photo]" ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvProd1" runat="server" ErrorMessage="Please upload at least 1 [Photo] " ControlToValidate="fupProd1" CssClass="" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="revProd1" runat="server" ControlToValidate="fupProd1" CssClass="" Display="Dynamic" ErrorMessage="Please only upload .jpg or .png format of image " ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
                                                     </div>
                                                     <%-- Product Image 2 --%>
+                                                    <asp:Label ID="Label9" runat="server" Text="Product Image 2:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                                         <asp:FileUpload ID="fupProd2" runat="server" ForeColor="White" CssClass="form-control" />
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RegularExpressionValidator ID="revProd2" runat="server" ControlToValidate="fupProd2" CssClass="" Display="Dynamic" ErrorMessage="Only JPG and PNG are allowed for [Photo]" ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                        <asp:RegularExpressionValidator ID="revProd2" runat="server" ControlToValidate="fupProd2" CssClass="" Display="Dynamic" ErrorMessage="Please only upload .jpg or .png format of image " ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
                                                     </div>
                                                     <%-- Product Image 3 --%>
+                                                    <asp:Label ID="Label10" runat="server" Text="Product Image 3:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                                         <asp:FileUpload ID="fupProd3" runat="server" ForeColor="White" CssClass="form-control" />
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RegularExpressionValidator ID="revProd3" runat="server" ControlToValidate="fupProd3" CssClass="" Display="Dynamic" ErrorMessage="Only JPG and PNG are allowed for [Photo]" ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                        <asp:RegularExpressionValidator ID="revProd3" runat="server" ControlToValidate="fupProd3" CssClass="" Display="Dynamic" ErrorMessage="Please only upload .jpg or .png format of image " ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
                                                     </div>
                                                     <%-- Product Image 4 --%>
+                                                    <asp:Label ID="Label11" runat="server" Text="Product Image 4:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                                         <asp:FileUpload ID="fupProd4" runat="server" ForeColor="White" CssClass="form-control" />
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RegularExpressionValidator ID="revProd4" runat="server" ControlToValidate="fupProd4" CssClass="" Display="Dynamic" ErrorMessage="Only JPG and PNG are allowed for [Photo]" ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                        <asp:RegularExpressionValidator ID="revProd4" runat="server" ControlToValidate="fupProd4" CssClass="" Display="Dynamic" ErrorMessage="Please only upload .jpg or .png format of image " ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
                                                     </div>
                                                     <%-- Product Image 5 --%>
+                                                    <asp:Label ID="Label12" runat="server" Text="Product Image 5:" ForeColor="WhiteSmoke" Font-Bold="true"></asp:Label>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                                         <asp:FileUpload ID="fupProd5" runat="server" ForeColor="White" CssClass="form-control" />
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <asp:RegularExpressionValidator ID="revProd5" runat="server" ControlToValidate="fupProd5" CssClass="" Display="Dynamic" ErrorMessage="Only JPG and PNG are allowed for [Photo]" ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                        <asp:RegularExpressionValidator ID="revProd5" runat="server" ControlToValidate="fupProd5" CssClass="" Display="Dynamic" ErrorMessage="Please only upload .jpg or .png format of image " ValidationExpression=".+\.(png|jpg)" ForeColor="Red"></asp:RegularExpressionValidator>
                                                     </div>
                                                 </div>
                                             </div>

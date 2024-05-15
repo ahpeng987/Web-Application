@@ -310,7 +310,5 @@
     <!-- main JS
 	============================================ -->
     <script src="js/main.js"></script>
-    </div>
-        </div>
    
 </asp:Content>

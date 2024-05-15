@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="prodDetail.aspx.cs" Inherits="WebApplication1.aspx.prodDetail1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="prodDetail.aspx.cs" Inherits="WebApplication1.aspx.prodDetail1" EnableViewState="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -75,7 +75,7 @@
                     <asp:Label ID="lblProdName" runat="server"></asp:Label>
                     <asp:Label ID="lblCatName" runat="server"></asp:Label>'s
                 </h3>
-                
+
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
@@ -118,9 +118,10 @@
                     <asp:Button ID="btnPlus" runat="server" CssClass="btn btn-primary btn-plus" Text="+" OnClick="btnPlus_Click" />
                     &nbsp;
                     <asp:Button runat="server" ID="AddToCartButton" CssClass="btn btn-primary px-3" Text="Add To Cart" OnClick="AddToCartButton_Click" />
-
+                    <asp:HiddenField ID="hfMaxQty" runat="server" />
                 </div>
-
+                <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Quantity must be at least 1 " MinimumValue="1" MaximumValue="100" Type="Integer" ForeColor="Red" ControlToValidate="txtQty"></asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="txtQty" ErrorMessage="Quantity exceeds available stock" ForeColor="Red" OnServerValidate="ValidateQuantity" ClientValidationFunction="validateQty"></asp:CustomValidator>
 
             </div>
         </div>
@@ -173,56 +174,57 @@
                         <p>With effect from 15 February 2023, JD Sports Malaysia will no longer accept physical returns to the warehouse.</p>
 
                     </div>
-                                       <div class="tab-pane fade" id="tab-pane-3">
-<div class="row">
-    <div class="col-md-6">
-        <h4 class="mb-4">Leave a review</h4>
-        <small>Your email address will not be published. Required fields are marked *</small>
-        <div class="d-flex my-3">
-            <p class="mb-0 mr-2">Your Rating * :</p>
-            <div class="text-primary">
-                <!-- Star rating input here -->
-             <asp:DropDownList ID="ratingDropDown" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="false">
-            <asp:ListItem Text="Select Rating &#9734;" Value="" Disabled="true" Selected="true"></asp:ListItem>
-            <asp:ListItem Text="1" Value="1"></asp:ListItem>
-            <asp:ListItem Text="2" Value="2"></asp:ListItem>
-            <asp:ListItem Text="3" Value="3"></asp:ListItem>
-            <asp:ListItem Text="4" Value="4"></asp:ListItem>
-            <asp:ListItem Text="5" Value="5"></asp:ListItem>
-        </asp:DropDownList>
-                
+                </div>
+                <div class="tab-pane fade" id="tab-pane-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="mb-4">Leave a review</h4>
+                            <small>Your email address will not be published. Required fields are marked *</small>
+                            <div class="d-flex my-3">
+                                <p class="mb-0 mr-2">Your Rating * :</p>
+                                <div class="text-primary">
+                                    <!-- Star rating input here -->
+                                    <asp:DropDownList ID="ratingDropDown" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="false">
+                                        <asp:ListItem Text="Select Rating &#9734;" Value="" Disabled="true" Selected="true"></asp:ListItem>
+                                        <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                                        <asp:ListItem Text="4" Value="4"></asp:ListItem>
+                                        <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                                    </asp:DropDownList>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your Review *</label>
+                                <asp:TextBox ID="message1" runat="server" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" placeholder="Need to purchase before leaving a comment"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Your Name *</label>
+                                <asp:TextBox ID="message2" runat="server" CssClass="form-control" ReadOnly="true" placeholder=""></asp:TextBox>
+                            </div>
+                            <div class="form-group mb-0">
+                                <asp:Button ID="submitReviewBtn" runat="server" Text="Leave Your Review" CssClass="btn btn-primary px-3" Enabled="false" />
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <h4 class="mb-4">View Feedback</h4>
+                            <small>Let's view the feedback of this product</small>
+                            <div class="form-group mb-0">
+                                <asp:Button ID="Button1" runat="server" Text="View Feedback" CssClass="btn btn-primary px-3" OnClick="Feedback_Click" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-           
-    <div class="form-group">
-        <label for="message">Your Review *</label>
-        <asp:TextBox ID="message1" runat="server" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" placeholder="Need to purchase before leaving a comment"></asp:TextBox>
     </div>
-    <div class="form-group">
-        <label for="name">Your Name *</label>
-        <asp:TextBox ID="message2" runat="server" CssClass="form-control" ReadOnly="true" placeholder=""></asp:TextBox>
-    </div>
-    <div class="form-group mb-0">
-        <asp:Button ID="submitReviewBtn" runat="server" Text="Leave Your Review" CssClass="btn btn-primary px-3"  Enabled="false"/>
-    </div>
-
-    </div>
-
-              
-                 <div class="col-md-6">
- <h4 class="mb-4">View Feedback</h4>
- <small>Let's view the feedback of this product</small>
- <div class="form-group mb-0">
-<asp:Button ID="Button1" runat="server" Text="View Feedback" CssClass="btn btn-primary px-3"  OnClick="Feedback_Click"/>
-    </div>
-     
-    </div>
-    </div>
-                
- </div>
-     </div>
-    </div>
-
     <!-- Shop Detail End -->
     <div class="container-fluid py-5">
         <div class="text-center mb-4">
@@ -254,5 +256,5 @@
             </asp:ListView>
         </div>
     </div>
-    
+
 </asp:Content>
