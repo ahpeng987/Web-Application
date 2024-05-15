@@ -1,0 +1,111 @@
+CREATE TABLE [dbo].[Admin] (
+    [adminID]    INT           IDENTITY (9000, 1) NOT NULL,
+    [adminName]  NVARCHAR (50) NOT NULL,
+    [adminEmail] NVARCHAR (50) NOT NULL,
+    [adminPsw]   NCHAR (10)    NOT NULL,
+    PRIMARY KEY CLUSTERED ([adminID] ASC)
+);
+
+CREATE TABLE [dbo].[User] (
+    [userID]         INT          IDENTITY (8000, 1) NOT NULL,
+    [userName]       VARCHAR (50) NOT NULL,
+    [userEmail]      VARCHAR (50) NOT NULL,
+    [userPsw]        CHAR (44)    NOT NULL,
+    [activationCode] CHAR (5)     NULL,
+    PRIMARY KEY CLUSTERED ([userID] ASC)
+);
+
+CREATE TABLE [dbo].[ProductCategory] (
+    [catID]   INT           IDENTITY (2000, 1) NOT NULL,
+    [catName] VARCHAR (50)  NOT NULL,
+    [catDesc] VARCHAR (MAX) NOT NULL,
+    PRIMARY KEY CLUSTERED ([catID] ASC)
+);
+
+CREATE TABLE [dbo].[Product] (
+    [prodID]    INT           IDENTITY (20000, 1) NOT NULL,
+    [prodName]  VARCHAR (50)  NOT NULL,
+    [prodDesc]  VARCHAR (MAX) NOT NULL,
+    [prodColor] NCHAR (10)    NOT NULL,
+    [prodPrice] FLOAT (53)    NOT NULL,
+    [prodQty]   INT           NOT NULL,
+    [prodSize]  FLOAT (53)    NOT NULL,
+    [prodImg1]  VARCHAR (80)  NULL,
+    [prodImg2]  VARCHAR (80)  NULL,
+    [prodImg3]  VARCHAR (80)  NULL,
+    [prodImg4]  VARCHAR (80)  NULL,
+    [prodImg5]  VARCHAR (80)  NULL,
+    [catID]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([prodID] ASC),
+    CONSTRAINT [FK_Product_ProductCategory] FOREIGN KEY ([catID]) REFERENCES [dbo].[ProductCategory] ([catID])
+);
+
+CREATE TABLE [dbo].[Payment] (
+    [paymentID]     INT             IDENTITY (3000, 1) NOT NULL,
+    [userID]        INT             NOT NULL,
+    [amount]        DECIMAL (10, 2) NOT NULL,
+    [paymentMethod] VARCHAR (50)    NOT NULL,
+    [paymentDate]   DATETIME        NOT NULL,
+    PRIMARY KEY CLUSTERED ([paymentID] ASC),
+    CONSTRAINT [FK_Payment] FOREIGN KEY ([userID]) REFERENCES [dbo].[User] ([userID])
+);
+
+
+CREATE TABLE [dbo].[Order] (
+    [orderID]   INT        IDENTITY (4000, 1) NOT NULL,
+    [orderDate] NCHAR (10) NOT NULL,
+    [totalAmt]  DATE       NOT NULL,
+    [paymentID] INT        NULL,
+    PRIMARY KEY CLUSTERED ([orderID] ASC),
+    CONSTRAINT [FK_Order] FOREIGN KEY ([paymentID]) REFERENCES [dbo].[Payment] ([paymentID])
+);
+
+
+CREATE TABLE [dbo].[OrderItem] (
+    [orderDetailID] INT        IDENTITY (5000, 1) NOT NULL,
+    [orderID]       INT        NOT NULL,
+    [prodID]        INT        NOT NULL,
+    [orderQty]      INT        NOT NULL,
+    [unitPrice]     FLOAT (53) NOT NULL,
+    PRIMARY KEY CLUSTERED ([orderDetailID] ASC),
+    CONSTRAINT [FK_OrderItem_prodID] FOREIGN KEY ([prodID]) REFERENCES [dbo].[Product] ([prodID]),
+    CONSTRAINT [FK_OrderItem_orderID] FOREIGN KEY ([orderID]) REFERENCES [dbo].[Order] ([orderID])
+);
+
+CREATE TABLE [dbo].[Delivery] (
+    [deliveryID]      INT           IDENTITY (1, 1) NOT NULL,
+    [orderID]         INT           NULL,
+    [deliveryAddress] VARCHAR (255) NULL,
+    [deliveryStatus]  VARCHAR (50)  NULL,
+    [deliveryDate]    DATETIME      NULL,
+    [courierType]     VARCHAR (100) NULL,
+    PRIMARY KEY CLUSTERED ([deliveryID] ASC),
+    CONSTRAINT [FK_Delivery] FOREIGN KEY ([orderID]) REFERENCES [dbo].[Order] ([orderID])
+);
+
+CREATE TABLE [dbo].[Promotion] (
+    [promoID]       INT             IDENTITY (10000, 1) NOT NULL,
+    [promoDescript] VARCHAR (MAX)   NOT NULL,
+    [oriPrice]      DECIMAL (10, 2) NOT NULL,
+    [disPrice]      DECIMAL (10, 2) NOT NULL,
+    [startDate]     DATE            NOT NULL,
+    [endDate]       DATE            NOT NULL,
+    [prodID]        INT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([promoID] ASC),
+    CONSTRAINT [FK_Promotion_Product] FOREIGN KEY ([prodID]) REFERENCES [dbo].[Product] ([prodID])
+);
+
+CREATE TABLE [dbo].[Rating] (
+    [ratingID]    INT          IDENTITY (100, 1) NOT NULL,
+    [paymentID]   INT          NOT NULL,
+    [ratingValue] INT          NOT NULL,
+    [feedBack]    VARCHAR (50) NOT NULL,
+    [userID]      INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([ratingID] ASC),
+    CONSTRAINT [FK_Rating_User] FOREIGN KEY ([userID]) REFERENCES [dbo].[User] ([userID])
+);
+
+CREATE VIEW [dbo].[Login] AS
+SELECT [userName] AS [Username], [userPsw] AS [Hash], 'Customer' AS [Role] FROM [User]
+UNION
+SELECT [adminEmail] AS [Username], [adminPsw] as [Hash], 'Admin' AS [Role] FROM [Admin]

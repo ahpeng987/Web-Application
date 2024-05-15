@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e0eecb5789314f49a35040d885029921" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="DatabaseModel1.Order" Width="1.5" PointX="2.625" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.OrderItem" Width="1.5" PointX="4.875" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Payment" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Product" Width="1.5" PointX="7" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.ProductCategory" Width="1.5" PointX="7" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Promotion" Width="1.5" PointX="9.125" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Rating" Width="1.5" PointX="4.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Table" Width="1.5" PointX="13.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.User" Width="1.5" PointX="2.625" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel1.FK_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_OrderItem_orderID" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_OrderItem_prodID" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Promotion_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Rating_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

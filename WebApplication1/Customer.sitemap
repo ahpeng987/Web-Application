@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode title="Home" description="Home Page" url="~/aspx/index.aspx">
+		
+		<siteMapNode title="Shop" description="Product Page" url="~/aspx/product.aspx">
+			<siteMapNode title="View Product Detail" description="View Product Detail" url="~/aspx/prodDetail.aspx" />
+			<siteMapNode title="Cart" description="Shopping Cart Page" url="~/aspx/cart.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Promotion" description="Promotion Page" url="~/promotion.aspx">
+			<siteMapNode title="PromotionDetail1" description="View Promotion Detail" url="~/promotionDetail1.aspx" />
+			<siteMapNode title="PromotionDetail2" description="View Promotion Detail" url="~/promotionDetail2.aspx" />
+			<siteMapNode title="PromotionDetail3" description="View Promotion Detail" url="~/promotionDetail3.aspx" />
+			<siteMapNode title="PromotionDetail4" description="View Promotion Detail" url="~/promotionDetail4.aspx" />
+			<siteMapNode title="PromotionDetail5" description="View Promotion Detail" url="~/promotionDetail5.aspx" />
+			<siteMapNode title="PromotionDetail6" description="View Promotion Detail" url="~/promotionDetail6.aspx" />
+			<siteMapNode title="PromotionDetail7" description="View Promotion Detail" url="~/promotionDetail7.aspx" />
+			<siteMapNode title="PromotionDetail8" description="View Promotion Detail" url="~/promotionDetail8.aspx" />
+			<siteMapNode title="PromotionDetail9" description="View Promotion Detail" url="~/promotionDetail9.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Contact" description="Contact Us Page" url="~/aspx/contact.aspx" />
+		
+		<siteMapNode title="Profile" description="User Profile Page" url="~/aspx/userProfile.aspx">
+			<siteMapNode title="Edit Profile" description="Edit Profile Page" url="~/aspx/editProfile.aspx" />
+			<siteMapNode title="Change Password" description="Change Password Page" url="~/aspx/changePass.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Login" description="Login Page" url="~/aspx/login.aspx">
+			<siteMapNode title="Forgot Password" description="Forget Password Page" url="~/aspx/forgetPass.aspx" />
+			<siteMapNode title="Register" description="Register Page" url="~/aspx/register.aspx" />
+		</siteMapNode>
+		
+	</siteMapNode>
+
+</siteMap>

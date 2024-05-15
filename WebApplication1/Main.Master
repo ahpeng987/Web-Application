@@ -1,0 +1,224 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="WebApplication1.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+
+    <title>JD Sports</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <div class="container-fluid">
+                <div class="row bg-secondary py-2 px-xl-5">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <div class="d-inline-flex align-items-center">
+                            <a class="text-dark" href="">FAQs</a>
+                            <span class="text-muted px-2">|</span>
+                            <a class="text-dark" href="">Help</a>
+                            <span class="text-muted px-2">|</span>
+                            <a class="text-dark" href="">Support</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-right">
+                        <div class="d-inline-flex align-items-center">
+                            <a class="text-dark px-2" href="https://www.facebook.com/jdsportsmalaysia/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-dark px-2" href="https://twitter.com/JDSports">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-dark px-2" href="https://www.linkedin.com/company/jd-sports-sea/">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="text-dark px-2" href="https://www.instagram.com/jdsportsmy/?hl=en">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="text-dark pl-2" href="https://www.youtube.com/channel/UCLo2AKP2axbd8Ij8dJCY2WQ">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center py-3 px-xl-5">
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <a href="index.aspx" class="text-decoration-none">
+                            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">JD</span>Sports</h1>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-6 text-left">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for products">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6 text-right">
+                        <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/aspx/cart.aspx" CssClass="btn border"><i class="fas fa-shopping-cart text-primary"></i></asp:HyperLink>
+                    </div>
+                </div>
+            </div>
+            <!-- Topbar End -->
+
+
+            <!-- Navbar Start -->
+            <div class="container-fluid mb-5">
+                <div class="row border-top px-xl-5">
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                            <h6 class="m-0">Categories</h6>
+                            <i class="fa fa-angle-down text-dark"></i>
+                        </a>
+                        <nav class="collapse navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+                            <div class="navbar-nav w-100 overflow-hidden" style="height: 100px">
+                                <div class="nav-item dropdown">
+                                    <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/aspx/product.aspx" Text="Men's Shoes" CssClass="dropdown-item" />
+                                    <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/aspx/product.aspx" Text="Women's Shoes" CssClass="dropdown-item" />
+                                    <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/aspx/product.aspx" Text="Junior's Shoes" CssClass="dropdown-item" />
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-lg-9">
+                        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                            <a href="../aspx/index.aspx" class="text-decoration-none d-block d-lg-none">
+                                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">JD</span>Sports</h1>
+                            </a>
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                <div class="navbar-nav mr-auto py-0">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/aspx/index.aspx" Text="Home" CssClass="nav-item nav-link" />
+                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/aspx/product.aspx" Text="Shop" CssClass="nav-item nav-link" />
+                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/aspx/promotion.aspx" Text="Promotion" CssClass="nav-item nav-link" />
+                                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/aspx/contact.aspx" Text="Contact" CssClass="nav-item nav-link" />
+                                    <asp:HyperLink ID="profile" runat="server" NavigateUrl="~/aspx/userProfile.aspx" Text="Profile" CssClass="nav-item nav-link" Visible="false"/>
+                                </div>
+                                <div class="navbar-nav ml-auto py-0">
+
+                                    <%--<asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/aspx/login.aspx" CssClass="nav-item nav-link"><i class="fa fa-user"></i> Login</asp:HyperLink>--%>
+                                    <asp:Button ID="loginBtn" runat="server" Text="Login" Style="border: none; background-color: white" CssClass="nav-item nav-link" CausesValidation="false" Visible="false" OnClick="loginBtn_Click" />
+                                    <asp:Button ID="logoutBtn" runat="server" Text="Logout" Style="border: none; background-color: white" CssClass="nav-item nav-link" CausesValidation="false" Visible="false" OnClick="logoutBtn_Click" />
+
+                                </div>
+                            </div>
+                        </nav>
+
+                    </div>
+
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+
+            <%-- Footer Start --%>
+            <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+                <div class="row px-xl-5 pt-5">
+                    <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                        <a href="index.aspx" class="text-decoration-none">
+                            <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">JD</span>Sports</h1>
+                        </a>
+                        <p style="text-align: justify">JD is a sports fashion, multichannel retailer of branded shoes, combining globally recognised brands such as Nike, adidas, Puma and The North Face, with strong private labels such as Pink Soda and Supply & Demand to provide an elevated consumer experience.</p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>1-9/9A, Plaza Gurney, 170, Gurney Dr, 10250 George Town, Penang</p>
+                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>customercare@jdsports.my</p>
+                        <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+04-295 7864</p>
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 mb-5">
+                                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                                <div class="d-flex flex-column justify-content-start">
+                                    <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/aspx/index.aspx" CssClass="text-dark mb-2"><i class="fa fa-angle-right mr-2"></i>Home</asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/aspx/product.aspx" CssClass="text-dark mb-2"><i class="fa fa-angle-right mr-2"></i>Our Shop</asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/aspx/promotion.aspx" CssClass="text-dark mb-2"><i class="fa fa-angle-right mr-2"></i>Promotion</asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/aspx/contact.aspx" CssClass="text-dark"><i class="fa fa-angle-right mr-2"></i>Contact Us</asp:HyperLink>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 mb-5">
+                                <h5 class="font-weight-bold text-dark mb-4">Our Shop Location</h5>
+                                <h6>Store 1</h6>
+                                <div class="d-flex flex-column justify-content-start">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15887.444731598325!2d100.29251373955078!3d5.4380431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac362ea88761f%3A0xf856fff58b30b0b8!2sJd%20sports!5e0!3m2!1sen!2smy!4v1715538468094!5m2!1sen!2smy" width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                                <br />
+                                <h6>Store 2</h6>
+                                <div class="d-flex flex-column justify-content-start">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15888.45329652166!2d100.38004249051927!3d5.3997010999999935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac53f6e8cb0b3%3A0x8bcf7530d3a4ce2e!2sJD%20Sports!5e0!3m2!1sen!2smy!4v1715538275774!5m2!1sen!2smy" width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row border-top border-light mx-xl-5 py-4">
+                    <div class="col-md-6 px-xl-0">
+                        <p class="mb-md-0 text-center text-md-left text-dark">
+                            &copy; <a class="text-dark font-weight-semi-bold" href="#">JD Sports</a>. All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 px-xl-0 text-center text-md-right">
+                        <img class="img-fluid" src="../img/payments.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+
+
+
+            <!-- Back to Top -->
+            <a href="../aspx/index.aspx" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+            <!-- Contact Javascript File -->
+            <script src="mail/jqBootstrapValidation.min.js"></script>
+            <script src="mail/contact.js"></script>
+
+            <!-- Template Javascript -->
+            <script src="js/main.js"></script>
+
+        </div>
+
+
+    </form>
+</body>
+</html>

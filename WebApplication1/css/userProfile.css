@@ -1,0 +1,80 @@
+﻿
+.usercard {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.userimage img {
+    transition: all 0.5s
+}
+
+.usercard:hover .image img {
+    transform: scale(1.5)
+}
+
+.userbtn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%
+}
+
+.username {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.useridd {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.useridd1 {
+    font-size: 12px
+}
+
+.usernumber {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.userfollow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444
+}
+
+.userbtn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #D19C97;
+    color: #efefef;
+    font-size: 15px
+}
+
+.usertext span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500
+}
+
+.usericons i {
+    font-size: 19px
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.userjoin {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold
+}
+
+.date {
+    background-color: #ccc
+}

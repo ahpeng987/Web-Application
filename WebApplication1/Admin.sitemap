@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode title="Dashboard" description="Dashboard Page" url="~/admin/dashboard.aspx">
+		
+		<siteMapNode title="Edit Admin Profile" description="Edit Admin Profile Page" url="~/admin/editAdminProfile.aspx">
+			<siteMapNode title="Change Admin Password" description="Change Admin Password Page" url="~/admin/changeAdminPass.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Product Management" description="Product Management Page" url="~/admin/ProductAdmin.aspx">
+			<siteMapNode title="Add Product" description="Add Product Page" url="~/admin/ProductAdd.aspx" />
+			<siteMapNode title="Edit Product" description="Edit Product Page" url="~/admin/ProductEdit.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Promotion Management" description="Promotion Management Page" url="~/admin/PromotionAdmin.aspx">
+			<siteMapNode title="Edit Promotion" description="Edit Promotion Page" url="~/admin/PromotionEdit.aspx" />
+			<siteMapNode title="Update Promotion" description="Update Promotion Page" url="~/admin/UpdatePromotion.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Feedback Management" description="Feedback Management Page" url="~/admin/AdminFeedBack.aspx" />
+		
+		<siteMapNode title="Delivery Management" description="Delivery Management Page" url="~/admin/Delivery.aspx">
+			<siteMapNode title="Add Delivery" description="Add Delivery Page" url="~/admin/DeliveryAdd.aspx" />
+			<siteMapNode title="Update Delivery" description="Update Delivery Page" url="~/admin/DeliveryUpdate.aspx" />
+		</siteMapNode>
+		
+		<siteMapNode title="Product Report" description="Product Report Page" url="~/admin/productReport.aspx" />
+		<siteMapNode title="Feedback Report" description="Feedback Report Page" url="~/admin/feedbackReport.aspx" />
+		<siteMapNode title="Payment Report" description="Payment Report Page" url="~/admin/PaymentReport.aspx" />
+		<siteMapNode title="Payment Method Report" description="Payment Method Report Page" url="~/admin/paymentMethodReport.aspx" />
+		
+		<siteMapNode title="Order Report" description="Order Report Page" url="~/admin/OrderAdmin.aspx">
+			<siteMapNode title="Edit Order" description="Edit Order Page" url="~/admin/EditOrder.aspx" />
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>

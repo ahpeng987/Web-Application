@@ -1,0 +1,143 @@
+﻿.login-register, .resetPsw {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 450px;
+    height: 600px;
+    box-shadow: 0 0 20px 20px #bfb6ba;
+    perspective: 1000px;
+}
+
+.innerModal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.loginModal, .registerModal, .resetModal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-color: #ffffff;
+    padding: 40px;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+
+}
+
+.registerModal {
+    transform: rotateY(180deg);
+}
+
+    .loginModal span, .registerModal span {
+        margin-top: 6px;
+        margin-right: 6px;
+        color: #1C1C1C;
+        position: relative;
+    }
+
+.button {
+    font-size: 1em;
+    background-color: #1C1C1C;
+    color: mistyrose;
+    padding: 6px 10px;
+    margin: 0;
+    border-radius: 20px;
+    border: 1px solid #1C1C1C;
+}
+
+    .button:hover {
+        background-color: darkgray;
+    }
+
+.loginModal span#word, .registerModal span#word, .button {
+    float: right;
+}
+
+.modal h2 {
+    font-weight: bolder;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1C1C1C;
+    text-shadow: 2px 2px gainsboro;
+}
+
+.inputBox {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #1C1C1C;
+    margin: 6px 0;
+    height: 32px;
+    border-radius: 30px;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    outline: none;
+    text-align: center;
+    color: #1C1C1C;
+    font-size: 1.3em;
+}
+
+    .inputBox:focus {
+        background-color: gainsboro;
+    }
+
+#loginForm::placeholder, #registerForm::placeholder {
+    color: #1C1C1C;
+    font-size: 20pt;
+}
+
+.loginBtn, .registerBtn, .resetBtn {
+    width: 100%;
+    border: 2px solid #1C1C1C;
+    margin: 35px 0 10px;
+    font-size: 1.3em;
+    border-radius: 30px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #1C1C1C;
+    color: mistyrose;
+    cursor: pointer;
+}
+
+    .loginBtn:hover, .registerBtn:hover, .resetBtn:hover {
+        background-color: darkgray;
+    }
+
+#forgotPsw {
+    font-size: 15px;
+    float: right;
+    text-decoration: none;
+    color: #1C1C1C;
+    font-weight: bold;
+}
+
+    #forgotPsw:hover {
+        color: darkgray;
+        text-decoration: underline;
+    }
+
+#loginForm i, #registerForm i, #resetForm i {
+    position: absolute;
+    padding: 18px;
+    color: #1C1C1C;
+    font-size: 15pt;
+}
+
+.fa-arrow-circle-left {
+    font-size: 2em;
+    color: #1C1C1C;
+    margin: 10px;
+    cursor: pointer;
+}
