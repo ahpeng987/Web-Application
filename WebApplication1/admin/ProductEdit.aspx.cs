@@ -220,51 +220,66 @@ namespace WebApplication1.admin
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            
+
             string id = txtProdID.Text;
             Product p = db.Products.SingleOrDefault(o => o.prodID.ToString() == id);
 
             if (p != null)
             {
-                string path1 = MapPath("~/admin/products/");
-                string filename1 = p.prodImg1;
-                File.Delete(path1 + filename1);
-
-                if (fupProd2.HasFile)
+                // Check if the product is associated with any order items
+                if (db.OrderItems.Any(oi => oi.prodID == p.prodID))
                 {
-                    string path2 = MapPath("~/admin/products/");
-                    string filename2 = p.prodImg2;
-                    File.Delete(path2 + filename2);
+                    // If the product is associated with order items, display a message to the user
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showAlert", "alert('Cannot delete the product because it is associated with order items.');", true);
+                    return; // Stop further execution
                 }
 
-                if (fupProd3.HasFile)
+                try
                 {
-                    string path3 = MapPath("~/admin/products/");
-                    string filename3 = p.prodImg3;
-                    File.Delete(path3 + filename3);
-                }
+                    string path1 = MapPath("~/admin/products/");
+                    string filename1 = p.prodImg1;
+                    File.Delete(path1 + filename1);
 
-                if (fupProd4.HasFile)
+                    if (fupProd2.HasFile)
+                    {
+                        string path2 = MapPath("~/admin/products/");
+                        string filename2 = p.prodImg2;
+                        File.Delete(path2 + filename2);
+                    }
+
+                    if (fupProd3.HasFile)
+                    {
+                        string path3 = MapPath("~/admin/products/");
+                        string filename3 = p.prodImg3;
+                        File.Delete(path3 + filename3);
+                    }
+
+                    if (fupProd4.HasFile)
+                    {
+                        string path4 = MapPath("~/admin/products/");
+                        string filename4 = p.prodImg4;
+                        File.Delete(path4 + filename4);
+                    }
+
+                    if (fupProd5.HasFile)
+                    {
+                        string path5 = MapPath("~/admin/products/");
+                        string filename5 = p.prodImg5;
+                        File.Delete(path5 + filename5);
+                    }
+
+
+                    db.Products.Remove(p);
+                    db.SaveChanges();
+                    Response.Redirect("ProductAdmin.aspx");
+
+                }
+                catch (Exception ex)
                 {
-                    string path4 = MapPath("~/admin/products/");
-                    string filename4 = p.prodImg4;
-                    File.Delete(path4 + filename4);
+                    // Handle other exceptions that might occur during deletion
+                    Response.Write("An error occurred: " + ex.Message);
                 }
-
-                if (fupProd5.HasFile)
-                {
-                    string path5 = MapPath("~/admin/products/");
-                    string filename5 = p.prodImg5;
-                    File.Delete(path5 + filename5);
-                }
-
-
-                db.Products.Remove(p);
-                db.SaveChanges();
             }
-
-            Response.Redirect("ProductAdmin.aspx");
-
 
         }
     }
