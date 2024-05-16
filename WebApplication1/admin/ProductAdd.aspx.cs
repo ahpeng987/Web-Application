@@ -19,7 +19,7 @@ namespace WebApplication1.admin
             }
             else
             {
-
+                Response.Redirect("../admin/notAdmin.aspx");
             }
         }
         protected void btnMinusQty_Click(object sender, EventArgs e)

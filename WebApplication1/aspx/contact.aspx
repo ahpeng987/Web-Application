@@ -32,22 +32,22 @@
                     <div class="control-group">
 
                         <asp:TextBox ID="txtCustName" runat="server" CssClass="form-control" placeholder="Your Name" BorderColor="Black" MaxLength="50"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvCustName" runat="server" ErrorMessage="*Please enter your name" ControlToValidate="txtCustName" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvCustName" runat="server" ErrorMessage="Please enter your [Name]" ControlToValidate="txtCustName" ForeColor="Red"></asp:RequiredFieldValidator>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Your Email" BorderColor="Black"  MaxLength="60"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="*Please enter your email" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please enter your [Email]" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
                         <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" placeholder="Subject" BorderColor="Black"  MaxLength="50"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ErrorMessage="*Please enter subject" ControlToValidate="txtSubject" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ErrorMessage="Please enter [Subject]" ControlToValidate="txtSubject" ForeColor="Red"></asp:RequiredFieldValidator>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
                         <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" placeholder="Please enter your message" TextMode="MultiLine" BorderColor="Black" MaxLength="500"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvArea" runat="server" ErrorMessage="*Please enter subject" ControlToValidate="txtArea" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvArea" runat="server" ErrorMessage="Please enter [Message]" ControlToValidate="txtArea" ForeColor="Red"></asp:RequiredFieldValidator>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div>

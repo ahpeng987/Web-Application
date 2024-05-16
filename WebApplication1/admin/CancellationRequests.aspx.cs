@@ -17,6 +17,16 @@ namespace WebApplication1.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["adminName"] != null)
+            {
+                string adminname = Session["adminName"].ToString();
+                lblWelcomeMessage.Text = adminname;
+            }
+            else
+            {
+                Response.Redirect("../admin/notAdmin.aspx");
+            }
+
             LoadCancellationRequests();
         }
 

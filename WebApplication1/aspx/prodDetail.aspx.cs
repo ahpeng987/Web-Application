@@ -35,6 +35,7 @@ namespace WebApplication1.aspx
                     {
                         hfMaxQty.Value = qty; // Store the max quantity in hidden field
                     }
+                    lblQuantity.Text = "Quantity left: " + qty;
                 }
                 else
                 {
@@ -279,12 +280,46 @@ namespace WebApplication1.aspx
 
         protected void Feedback_Click(object sender, EventArgs e)
         {
+            string prodID = Request.QueryString["prodID"];
 
-            string promoID = Request.QueryString["promoID"];
-            string prodName = lblProdName.Text;
+            if (!string.IsNullOrEmpty(prodID))
+            {
+                // Assuming you have a method to retrieve product name from the database based on prodID
+                string prodName = GetProdNameFromProdID(prodID);
 
+                if (!string.IsNullOrEmpty(prodName))
+                {
+                    Response.Redirect($"SpecificFeedback.aspx?prodID={prodID}&prodName={Server.UrlEncode(prodName)}");
+                }
+                else
+                {
+                    // Handle the case where product name is not found for the given prodID
+                    Response.Write("Product name not found for the given product ID.");
+                }
+            }
+            else
+            {
+                // Handle the case where prodID is not provided in the query string
+                Response.Write("Product ID not provided.");
+            }
+        }
 
-            Response.Redirect($"viewfeedback.aspx?promoID={promoID}&prodName={prodName}");
+        private string GetProdNameFromProdID(string prodID)
+        {
+            string prodName = "";
+
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT prodName FROM Product WHERE prodID = @prodID";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@prodID", prodID);
+
+                con.Open();
+                prodName = cmd.ExecuteScalar()?.ToString(); // Assuming prodName is a string
+            }
+
+            return prodName;
         }
 
 

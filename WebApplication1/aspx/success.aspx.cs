@@ -11,7 +11,7 @@ namespace WebApplication1.aspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write("<script>alert('Account registered successfully ! You can login now !')</script>");
+            Response.Write("<script>alert('Account registered successfully. You can login now.')</script>");
         }
     }
 }

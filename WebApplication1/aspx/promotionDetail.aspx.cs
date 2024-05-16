@@ -25,7 +25,7 @@ namespace WebApplication1.aspx
                     // Retrieve the promoID from the query parameter
                     string promoID = Request.QueryString["promoID"];
                     string prodID = Request.QueryString["prodID"];
-                    string name = Request.QueryString["prodName"];
+
 
                     // Use promoID to fetch promotion details
                     FetchAndDisplayPromotionDetails(promoID, prodID);
@@ -185,7 +185,7 @@ namespace WebApplication1.aspx
             }
             else
             {
-                // Handle the case when the text is empty or not a valid number
+                
                 txtQty.Text = "0";
             }
         }
@@ -204,12 +204,67 @@ namespace WebApplication1.aspx
         }
         protected void Feedback_Click(object sender, EventArgs e)
         {
-
             string promoID = Request.QueryString["promoID"];
-            string prodName = lblProductName.InnerText;
 
+            // Get the prodID corresponding to the promoID
+            string prodID = GetProdIDFromPromoID(promoID);
 
-            Response.Redirect($"viewfeedback.aspx?promoID={promoID}&prodName={prodName}");
+            if (!string.IsNullOrEmpty(prodID))
+            {
+                
+                string prodName = GetProdNameFromProdID(prodID); 
+
+                if (!string.IsNullOrEmpty(prodName))
+                {
+                    Response.Redirect($"SpecificFeedback.aspx?prodID={prodID}&prodName={Server.UrlEncode(prodName)}");
+                }
+                else
+                {
+                    
+                    Response.Write("Product name not found for the given product ID.");
+                }
+            }
+            else
+            {
+                // Handle the case where prodID is not found for the given promoID
+                Response.Write("Product ID not found for the given promotion ID.");
+            }
+        }
+
+        private string GetProdIDFromPromoID(string promoID)
+        {
+            string prodID = "";
+
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT prodID FROM Promotion WHERE promoID = @promoID";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@promoID", promoID);
+
+                con.Open();
+                prodID = cmd.ExecuteScalar()?.ToString(); 
+            }
+
+            return prodID;
+        }
+
+        private string GetProdNameFromProdID(string prodID)
+        {
+            string prodName = "";
+
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT prodName FROM Product WHERE prodID = @prodID";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@prodID", prodID);
+
+                con.Open();
+                prodName = cmd.ExecuteScalar()?.ToString(); 
+            }
+
+            return prodName;
         }
 
 

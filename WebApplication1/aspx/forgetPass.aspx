@@ -20,7 +20,6 @@
                             <h2 class="text-center">Forgot Password?</h2>
                             <p>Enter your email to reset your password.</p>
                             <div class="panel-body">
-
                                 <form id="forgetForm" runat="server" role="form" autocomplete="off" class="form">
 
                                     <div class="form-group">
@@ -30,8 +29,8 @@
 
                                         </div>
                                         <div>
-                                            <asp:CustomValidator ID="cvEmail" runat="server" ErrorMessage="This [Email] is not registered !!" ControlToValidate="fgtEmail" Display="Dynamic" Font-Bold="True" ForeColor="Red" OnServerValidate="cvEmail_ServerValidate"></asp:CustomValidator>
-                                            <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please enter [Email} with &quot;@&quot; !!" ControlToValidate="fgtEmail" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
+                                            <asp:CustomValidator ID="cvEmail" runat="server" ErrorMessage="This [Email] is not registered" ControlToValidate="fgtEmail" Display="Dynamic" Font-Bold="True" ForeColor="Red" OnServerValidate="cvEmail_ServerValidate"></asp:CustomValidator>
+                                            <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please enter [Email} with &quot;@&quot;" ControlToValidate="fgtEmail" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -1,7 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Web.UI;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System.Web.UI.WebControls;
+using QRCoder;
 
 namespace WebApplication1.aspx
 {
@@ -29,6 +36,13 @@ namespace WebApplication1.aspx
                     {
                         // 'orderID' is successfully parsed as an integer
                         PopulateOrderDetails(orderID);
+
+
+                        // Generate QR code for this order ID
+                        GenerateQRCode(orderID);
+
+
+
                     }
                     else
                     {
@@ -144,10 +158,11 @@ namespace WebApplication1.aspx
                     // Set generated HTML content to the Literal control
                     litOrderItems.Text = orderItemsHtml.ToString();
 
+
                     // Read other details (e.g., order date, order number, total amount) from the first row
                     if (reader.HasRows)
                     {
-                       
+
 
                         // Calculate total amount based on all items (assuming fixed shipping cost)
                         decimal shippingCost = 10.00m;
@@ -167,6 +182,32 @@ namespace WebApplication1.aspx
             {
                 // Handle database exception
                 Response.Write("Error retrieving order details: " + ex.Message);
+            }
+        }
+
+        private void GenerateQRCode(int orderID)
+        {
+            try
+            {
+                string url = $"{Request.Url.GetLeftPart(UriPartial.Authority)}/aspx/downloadPDF.aspx?orderID={orderID}";
+
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+
+                // Generate QR code image
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    qrCode.GetGraphic(10).Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+
+                    // Convert to base64 string to display in <img> tag
+                    string base64Image = Convert.ToBase64String(stream.ToArray());
+                    imgQRCode.Src = $"data:image/png;base64,{base64Image}";
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write($"Error generating QR code: {ex.Message}");
             }
         }
 

@@ -8,6 +8,10 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 
 namespace WebApplication1.admin
 {
@@ -21,6 +25,10 @@ namespace WebApplication1.admin
             {
                 string adminname = Session["adminName"].ToString();
                 lblWelcomeMessage.Text = adminname;
+            }
+            else
+            {
+                Response.Redirect("../admin/notAdmin.aspx");
             }
 
             if (!IsPostBack)
@@ -56,7 +64,6 @@ namespace WebApplication1.admin
                 Response.Write("An error occurred while retrieving orders: " + ex.Message);
             }
         }
-
 
         // Event handler for edit order button click
         protected void EditOrder(object sender, EventArgs e)
@@ -125,7 +132,6 @@ namespace WebApplication1.admin
             }
         }
 
-
         protected void btnGenerateReport_Click(object sender, EventArgs e)
         {
             try
@@ -133,29 +139,146 @@ namespace WebApplication1.admin
                 // Retrieve data for Order Summary
                 DataTable orderSummaryData = GetOrderSummaryData();
 
-                // Generate order summary report
-                string orderSummaryReport = GenerateOrderSummaryReport(orderSummaryData);
-
                 // Retrieve data for Customer Order History
                 DataTable customerOrderHistoryData = GetCustomerOrderHistoryData();
 
-                // Generate customer order history report
-                string customerOrderHistoryReport = GenerateCustomerOrderHistoryReport(customerOrderHistoryData);
-
-                // Combine both reports
-                string combinedReport = orderSummaryReport + Environment.NewLine + customerOrderHistoryReport;
-
-                // Output combined report
-                Response.Clear();
-                Response.ContentType = "text/plain";
-                Response.AddHeader("Content-Disposition", "attachment; filename=CombinedOrderReport.txt");
-                Response.Write(combinedReport);
-                Response.End();
+                // Generate PDF report
+                GeneratePDFReport(orderSummaryData, customerOrderHistoryData);
             }
             catch (Exception ex)
             {
                 Response.Write("An error occurred while generating report: " + ex.Message);
             }
+        }
+
+        private void GeneratePDFReport(DataTable orderSummaryData, DataTable customerOrderHistoryData)
+        {
+            // Create a Document
+            Document document = new Document();
+            MemoryStream memoryStream = new MemoryStream();
+
+            try
+            {
+                // Create a PDF writer that listens to the document and directs a PDF-stream to a file
+                PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
+
+                // Open the Document for writing
+                document.Open();
+
+                // Add Order Summary report
+                AddOrderSummaryReport(document, orderSummaryData);
+
+                // Add Customer Order History report
+                AddCustomerOrderHistoryReport(document, customerOrderHistoryData);
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+                throw ex;
+            }
+            finally
+            {
+                // Close the Document
+                document.Close();
+            }
+
+            // Output PDF content
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=OrderReport.pdf");
+            Response.BinaryWrite(memoryStream.ToArray());
+            Response.End();
+        }
+
+        private void AddOrderSummaryReport(Document document, DataTable orderSummaryData)
+        {
+            // Add a title
+            Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18f, BaseColor.BLACK);
+            Paragraph title = new Paragraph("Order Summary Report", titleFont);
+            title.Alignment = Element.ALIGN_CENTER;
+            document.Add(title);
+
+            // Add a separator manually
+            Chunk linebreak = new Chunk(new LineSeparator(0.5f, 100, BaseColor.BLACK, Element.ALIGN_CENTER, 1));
+            document.Add(linebreak);
+
+            // Add a subtitle
+            Font subtitleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14f, BaseColor.BLACK);
+            Paragraph subtitle = new Paragraph("Summary", subtitleFont);
+            document.Add(subtitle);
+
+            document.Add(new Chunk("\n"));
+
+            // Create PdfPTable for order summary data
+            PdfPTable table = new PdfPTable(orderSummaryData.Columns.Count);
+            table.WidthPercentage = 100; // Make the table fill the entire width of the page
+
+            // Add column headers
+            foreach (DataColumn column in orderSummaryData.Columns)
+            {
+                PdfPCell headerCell = new PdfPCell(new Phrase(column.ColumnName));
+                headerCell.BackgroundColor = BaseColor.LIGHT_GRAY; // Add background color to header cells
+                table.AddCell(headerCell);
+            }
+
+            // Add rows
+            foreach (DataRow row in orderSummaryData.Rows)
+            {
+                foreach (object item in row.ItemArray)
+                {
+                    table.AddCell(item.ToString());
+                }
+            }
+
+            // Add PdfPTable to the Document
+            document.Add(table);
+
+            // Add new line
+            document.Add(new Chunk("\n"));
+            document.Add(new Chunk("\n"));
+            document.Add(new Chunk("\n"));
+            document.Add(new Chunk("\n"));
+            document.Add(new Chunk("\n"));
+        }
+
+        private void AddCustomerOrderHistoryReport(Document document, DataTable customerOrderHistoryData)
+        {
+            // Add a separator manually
+            Chunk linebreak = new Chunk(new LineSeparator(0.5f, 100, BaseColor.BLACK, Element.ALIGN_CENTER, 1));
+            document.Add(linebreak);
+
+
+
+            // Add a subtitle
+            Font subtitleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14f, BaseColor.BLACK);
+            Paragraph subtitle = new Paragraph("Customer Order History", subtitleFont);
+            document.Add(subtitle);
+
+            document.Add(new Chunk("\n"));
+
+            // Create PdfPTable for customer order history data
+            PdfPTable table = new PdfPTable(customerOrderHistoryData.Columns.Count);
+            table.WidthPercentage = 100; // Make the table fill the entire width of the page
+
+            // Add column headers
+            foreach (DataColumn column in customerOrderHistoryData.Columns)
+            {
+                PdfPCell headerCell = new PdfPCell(new Phrase(column.ColumnName));
+                headerCell.BackgroundColor = BaseColor.LIGHT_GRAY; // Add background color to header cells
+                table.AddCell(headerCell);
+            }
+
+            // Add rows
+            foreach (DataRow row in customerOrderHistoryData.Rows)
+            {
+                foreach (object item in row.ItemArray)
+                {
+                    table.AddCell(item.ToString());
+                }
+            }
+
+            // Add PdfPTable to the Document
+            document.Add(table);
         }
 
         private DataTable GetOrderSummaryData()
@@ -205,136 +328,10 @@ namespace WebApplication1.admin
             return data;
         }
 
-        private string GenerateOrderSummaryReport(DataTable data)
-        {
-            // Calculate summary statistics
-            int totalOrders = data.Rows.Count;
-            decimal totalSalesAmount = 0;
-            Dictionary<int, int> paymentMethodCounts = new Dictionary<int, int>();
-
-            foreach (DataRow row in data.Rows)
-            {
-                totalSalesAmount += Convert.ToDecimal(row["totalAmt"]);
-
-                int paymentID = Convert.ToInt32(row["paymentID"]);
-                if (paymentMethodCounts.ContainsKey(paymentID))
-                {
-                    paymentMethodCounts[paymentID]++;
-                }
-                else
-                {
-                    paymentMethodCounts.Add(paymentID, 1);
-                }
-            }
-
-            // Prepare report content
-            StringBuilder reportContent = new StringBuilder();
-            reportContent.AppendLine("Order Summary Report");
-            reportContent.AppendLine("---------------------");
-            reportContent.AppendLine($"Total Orders: {totalOrders}");
-            reportContent.AppendLine($"Total Sales Amount: ${totalSalesAmount}");
-            reportContent.AppendLine("Payment Method Breakdown:");
-
-            foreach (KeyValuePair<int, int> kvp in paymentMethodCounts)
-            {
-                // Retrieve payment method name from database or a lookup table
-                string paymentMethodName = GetPaymentMethodName(kvp.Key);
-                reportContent.AppendLine($"{paymentMethodName}: {kvp.Value} orders");
-            }
-
-            // Return report content as string
-            return reportContent.ToString();
-        }
-
-        private string GetPaymentMethodName(int paymentID)
-        {
-            string paymentMethodName = "";
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(cs))
-                {
-                    string query = "SELECT paymentMethod FROM Payment WHERE paymentID = @PaymentID";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.Parameters.AddWithValue("@PaymentID", paymentID);
-
-                    con.Open();
-                    object result = cmd.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
-                    {
-                        paymentMethodName = Convert.ToString(result);
-                    }
-                    con.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions appropriately (e.g., logging, displaying error message)
-                paymentMethodName = "Payment Method " + paymentID; // If an error occurs, return a default value
-            }
-
-            return paymentMethodName;
-        }
-
-        private string GenerateCustomerOrderHistoryReport(DataTable customerOrderHistoryData)
-        {
-            StringBuilder reportContent = new StringBuilder();
-            reportContent.AppendLine("Customer Order History Report");
-            reportContent.AppendLine("--------------------------------");
-
-            foreach (DataRow row in customerOrderHistoryData.Rows)
-            {
-                int orderID = Convert.ToInt32(row["orderID"]);
-                DateTime orderDate = Convert.ToDateTime(row["orderDate"]);
-                decimal totalAmt = Convert.ToDecimal(row["totalAmt"]);
-                int userID = Convert.ToInt32(row["userID"]);
-                string paymentMethod = row["paymentMethod"].ToString();
-
-                // You can add more details from the order if needed
-
-                // Append order details to the report content
-                reportContent.AppendLine($"Order ID: {orderID}");
-                reportContent.AppendLine($"Order Date: {orderDate}");
-                reportContent.AppendLine($"Total Amount: ${totalAmt}");
-                reportContent.AppendLine($"User ID: {userID}");
-                reportContent.AppendLine($"Payment Method: {paymentMethod}");
-                reportContent.AppendLine(); // Add a blank line for better readability
-            }
-
-            // Return the generated report content as a string
-            return reportContent.ToString();
-        }
 
 
-        private void GenerateCSVReport(DataTable data)
-        {
-            // Generate a CSV file based on DataTable data
-            StringWriter sw = new StringWriter();
 
-            // Write column headers
-            foreach (DataColumn column in data.Columns)
-            {
-                sw.Write(column.ColumnName + ",");
-            }
-            sw.WriteLine();
 
-            // Write rows
-            foreach (DataRow row in data.Rows)
-            {
-                for (int i = 0; i < data.Columns.Count; i++)
-                {
-                    sw.Write(row[i].ToString().Replace(",", string.Empty) + ",");
-                }
-                sw.WriteLine();
-            }
-
-            // Output CSV content
-            Response.Clear();
-            Response.ContentType = "text/csv";
-            Response.AddHeader("Content-Disposition", "attachment; filename=OrderReport.csv");
-            Response.Write(sw.ToString());
-            Response.End();
-        }
 
 
 

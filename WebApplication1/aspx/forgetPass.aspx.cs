@@ -19,7 +19,7 @@ namespace WebApplication1.aspx
         string cs = Global.CS;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void verifyEmail_Click(object sender, EventArgs e)
@@ -36,17 +36,34 @@ namespace WebApplication1.aspx
                 string activationcode = this.GenerateOTP();
                 string useremail = Session["email"].ToString();
 
-                string sql = "UPDATE [User] SET activationCode = @ActivationCode WHERE userEmail = @Email";
+                string sql1 = "SELECT * FROM [User] WHERE userEmail = @Email";
+                string sql2 = "UPDATE [User] SET activationCode = @ActivationCode WHERE userEmail = @Email";
 
                 SqlConnection con = new SqlConnection(cs);
-                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlCommand cmd1 = new SqlCommand(sql1, con);
+                SqlCommand cmd2 = new SqlCommand(sql2, con);
                 SqlDataAdapter sda = new SqlDataAdapter();
 
-                cmd.Parameters.AddWithValue("@ActivationCode", activationcode);
-                cmd.Parameters.AddWithValue("@Email", useremail);
-                cmd.Connection = con;
+                cmd1.Parameters.AddWithValue("@Email", useremail);
+                cmd1.Connection = con;
+
                 con.Open();
-                cmd.ExecuteNonQuery();
+                SqlDataReader dr = cmd1.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    string name = (string)dr["userName"];
+                    Session["userName"] = name;
+                }
+
+                dr.Close();
+                con.Close();
+
+                cmd2.Parameters.AddWithValue("@ActivationCode", activationcode);
+                cmd2.Parameters.AddWithValue("@Email", useremail);
+                cmd2.Connection = con;
+                con.Open();
+                cmd2.ExecuteNonQuery();
                 con.Close();
 
                 Session["otp"] = activationcode;
@@ -61,16 +78,17 @@ namespace WebApplication1.aspx
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                     smtp.UseDefaultCredentials = false;
                     smtp.EnableSsl = true;
-                    //smtp.Credentials = new NetworkCredential("jdsport456@gmail.com", "JDsport@!23");
                     smtp.Credentials = new NetworkCredential("thedotnetchannelsender22@gmail.com", "lgioehkvchemfkrw");
 
                     // Mail message configuration
                     MailMessage mm = new MailMessage();
                     mm.From = new MailAddress("thedotnetchannelsender22@gmail.com");
                     mm.To.Add(new MailAddress(recipientEmail));
-                    mm.Subject = "Account Activation";
+                    mm.Subject = "JD Sport: Account Activation";
 
-                    string body = "Hello, the following is your OTP: " + activationcode + ". Thank you.";
+                    string body = "Dear " + Session["userName"].ToString() + ", " +
+                                  "the following is your OTP code: " + activationcode + ". " +
+                                  "Thank you.";
 
                     mm.Body = body;
 
@@ -91,7 +109,7 @@ namespace WebApplication1.aspx
                 }
                 finally
                 {
-                    Response.Write("<script>alert('Email Validated successfully ! Please check your email for OTP !'); window.location.href='checkOTP.aspx';</script>");
+                    Response.Write("<script>alert('Email Validated successfully. Please check your email for OTP.'); window.location.href='checkOTP.aspx';</script>");
                 }
 
             }

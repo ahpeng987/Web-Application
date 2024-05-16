@@ -53,9 +53,11 @@ namespace WebApplication1.aspx
                 MailMessage mm = new MailMessage();
                 mm.From = new MailAddress("thedotnetchannelsender22@gmail.com");
                 mm.To.Add(new MailAddress(recipientEmail));
-                mm.Subject = "Account Activation";
+                mm.Subject = "JD Sport: Account Activation";
 
-                string body = "Hello, the following is your OTP: " + activationcode + ". Thank you.";
+                string body = "Dear " + Session["userName"].ToString() + ", " +
+                              "the following is your OTP code: " + activationcode + ". " +
+                              "Thank you.";
 
                 mm.Body = body;
 
@@ -76,7 +78,7 @@ namespace WebApplication1.aspx
             }
             finally
             {
-                Response.Write("<script>alert('Email Validated successfully ! Please check your email for OTP !'); window.location.href='checkOTP.aspx';</script>");
+                Response.Write("<script>alert('Email Validated successfully. Please check your email for OTP.'); window.location.href='checkOTP.aspx';</script>");
             }
 
             Response.Write("<script>alert('OTP resend successfully !!')</script>");

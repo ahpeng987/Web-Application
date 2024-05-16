@@ -25,7 +25,7 @@ namespace WebApplication1.aspx
                 string password = resetPass.Text;
                 string hash = Security.getHash(password);
 
-                string sql = "UPDATE [User] SET userPsw = @Password WHERE userEmail = @Email";
+                string sql = "UPDATE [User] SET userPsw = @Password, activationCode = NULL WHERE userEmail = @Email";
 
                 using (SqlConnection con = new SqlConnection(cs))
                 {

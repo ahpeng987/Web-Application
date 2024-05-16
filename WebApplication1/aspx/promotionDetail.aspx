@@ -181,37 +181,11 @@
                 <div class="tab-pane fade" id="tab-pane-3">
     <div class="row">
         <div class="col-md-6">
-            <h4 class="mb-4">Leave a review</h4>
-            <small>Your email address will not be published. Required fields are marked *</small>
-            <div class="d-flex my-3">
-                <p class="mb-0 mr-2">Your Rating * :</p>
-                <div class="text-primary">
-                    <!-- Star rating input here -->
-                 <asp:DropDownList ID="ratingDropDown" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="false">
-                <asp:ListItem Text="Select Rating &#9734;" Value="" Disabled="true" Selected="true"></asp:ListItem>
-                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-            </asp:DropDownList>
-                    
-                </div>
-            </div>
+           
                
-        <div class="form-group">
-            <label for="message">Your Review *</label>
-            <asp:TextBox ID="message1" runat="server" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" placeholder="Need to purchase before leaving a comment"></asp:TextBox>
-        </div>
-        <div class="form-group">
-            <label for="name">Your Name *</label>
-            <asp:TextBox ID="message2" runat="server" CssClass="form-control" ReadOnly="true" placeholder=""></asp:TextBox>
-        </div>
-        <div class="form-group mb-0">
-            <asp:Button ID="submitReviewBtn" runat="server" Text="Leave Your Review" CssClass="btn btn-primary px-3"  Enabled="false"/>
-        </div>
+        
 
-        </div>
+        
 
                   
                      <div class="col-md-6">
@@ -223,7 +197,8 @@
          
         </div>
         </div>
-                    
+                    </div>
+                </div>    
      </div>
     </div>
 </div>

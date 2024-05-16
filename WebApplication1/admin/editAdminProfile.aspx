@@ -75,7 +75,6 @@
                     <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="editAdminProfile.aspx" title="Edit Profile">
                     <img src="img/profile.jpg" alt=""/>
                     </asp:HyperLink>
-                    <%--<h2>Lakian <span class="min-dtn">Das</span></h2>--%>
                     <br />
                     <asp:Label ID="lblWelcomeMessage" runat="server" Text="<%= adminName %>" Font-Bold="True" Font-Italic="False" Font-Names="Georgia" Font-Size="Larger"></asp:Label>
                 </div>
@@ -91,20 +90,31 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li class="active">
-
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/admin/dashboard.aspx"><span class="mini-click-non">Dashboard</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/admin/ProductAdmin.aspx"><span class="mini-click-non">Product Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin/PromotionAdmin.aspx"><span class="mini-click-non">Promotion Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/admin/AdminFeedBack.aspx"><span class="mini-click-non">Feedback Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/admin/Delivery.aspx"><span class="mini-click-non">Delivery Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/admin/OrderAdmin.aspx"><span class="mini-click-non">Order Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/admin/productReport.aspx"><span class="mini-click-non">Product Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/admin/feedbackReport.aspx"><span class="mini-click-non">Feedback Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/admin/PaymentReport.aspx"><span class="mini-click-non">Payment Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/admin/paymentMethodReport.aspx"><span class="mini-click-non">Payment Method Report</span></asp:HyperLink>
-
-
-
+                        </li>
+                        <li class="inactive">
+                            <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="#"><span class="mini-click-non">Management     </span><i class="fa fa-angle-down"></i></asp:HyperLink>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/admin/ProductAdmin.aspx"><span class="mini-click-non">Product Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin/PromotionAdmin.aspx"><span class="mini-click-non">Promotion Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/admin/AdminFeedBack.aspx"><span class="mini-click-non">Feedback Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/admin/Delivery.aspx"><span class="mini-click-non">Delivery Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/admin/OrderAdmin.aspx"><span class="mini-click-non">Order Management</span></asp:HyperLink></li>
+                            </ul>
+                        </li>
+                        <li class="inactive">
+                            <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="#"><span class="mini-click-non">Report     </span><i class="fa fa-angle-down"></i></asp:HyperLink>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/admin/productReport.aspx"><span class="mini-click-non">Product Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/admin/feedbackReport.aspx"><span class="mini-click-non">Feedback Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/admin/PaymentReport.aspx"><span class="mini-click-non">Payment Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/admin/paymentMethodReport.aspx"><span class="mini-click-non">Payment Method Report</span></asp:HyperLink>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -155,18 +165,18 @@
                                                         <asp:TextBox ID="editAdminName" runat="server" CssClass="form-control" Text="<%= adminName %>" MaxLength="50"></asp:TextBox>
                                                     </div>
                                                     <div>
-                                                        <asp:RequiredFieldValidator ID="rfvAdminName" runat="server" ErrorMessage="Please Fill Up Your Username !!" ControlToValidate="editAdminName" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                                                        <asp:RegularExpressionValidator ID="revAdminName" runat="server" ErrorMessage="Please Enter Alphabet Only !!" ControlToValidate="editAdminName" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
-                                                        <asp:CustomValidator ID="cvAdminName" runat="server" ErrorMessage="This [Username] has been used !!" Display="Dynamic" ControlToValidate="editAdminName" Font-Bold="True" ForeColor="Red" OnServerValidate="cvAdminName_ServerValidate"></asp:CustomValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvAdminName" runat="server" ErrorMessage="Please fill up your [Username]" ControlToValidate="editAdminName" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="revAdminName" runat="server" ErrorMessage="Please enter alphabet only" ControlToValidate="editAdminName" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
+                                                        <asp:CustomValidator ID="cvAdminName" runat="server" ErrorMessage="This [Username] has been used" Display="Dynamic" ControlToValidate="editAdminName" Font-Bold="True" ForeColor="Red" OnServerValidate="cvAdminName_ServerValidate"></asp:CustomValidator>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <asp:Label ID="lblEmail" runat="server" Text="Admin Email: " CssClass="input-group-addon"></asp:Label>
                                                         <asp:TextBox ID="editAdminEmail" runat="server" CssClass="form-control" Text="<%= adminEmail %>" MaxLength="50"></asp:TextBox>
                                                     </div>
                                                     <div>
-                                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please Fill Up Your [Email] !!" ControlToValidate="editAdminEmail" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                                                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please enter [Email] with &quot;@&quot; !!" ControlToValidate="editAdminEmail" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
-                                                        <asp:CustomValidator ID="cvEmail" runat="server" ErrorMessage="This [Email] has been used !!" ControlToValidate="editAdminEmail" Display="Dynamic" Font-Bold="True" ForeColor="Red" OnServerValidate="cvEmail_ServerValidate"></asp:CustomValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please fill up your [Email]" ControlToValidate="editAdminEmail" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please enter [Email] with &quot;@&quot;" ControlToValidate="editAdminEmail" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
+                                                        <asp:CustomValidator ID="cvEmail" runat="server" ErrorMessage="This [Email] has been used" ControlToValidate="editAdminEmail" Display="Dynamic" Font-Bold="True" ForeColor="Red" OnServerValidate="cvEmail_ServerValidate"></asp:CustomValidator>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="text-center custom-pro-edt-ds">

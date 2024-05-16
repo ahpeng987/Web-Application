@@ -33,7 +33,7 @@ namespace WebApplication1.aspx
             {
                 lblVerify.Text = "Activation successful.";
                 lblVerify.ForeColor = Color.Green;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('OTP Verified Successfully !!'); window.location='" + ResolveUrl("../aspx/resetPsw.aspx") + "';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('OTP Verified Successfully.'); window.location='" + ResolveUrl("../aspx/resetPsw.aspx") + "';", true);
             }
             else
             {

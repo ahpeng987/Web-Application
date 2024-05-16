@@ -75,7 +75,6 @@
                     <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="editAdminProfile.aspx" title="Edit Profile">
                     <img src="img/profile.jpg" alt=""/>
                     </asp:HyperLink>
-                    <%--<h2>Lakian <span class="min-dtn">Das</span></h2>--%>
                     <br />
                     <asp:Label ID="lblWelcomeMessage" runat="server" Text="<%= adminName %>" Font-Bold="True" Font-Italic="False" Font-Names="Georgia" Font-Size="Larger"></asp:Label>
                 </div>
@@ -91,20 +90,31 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li class="active">
-
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/admin/dashboard.aspx"><span class="mini-click-non">Dashboard</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/admin/ProductAdmin.aspx"><span class="mini-click-non">Product Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin/PromotionAdmin.aspx"><span class="mini-click-non">Promotion Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/admin/AdminFeedBack.aspx"><span class="mini-click-non">Feedback Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/admin/Delivery.aspx"><span class="mini-click-non">Delivery Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/admin/OrderAdmin.aspx"><span class="mini-click-non">Order Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/admin/productReport.aspx"><span class="mini-click-non">Product Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/admin/feedbackReport.aspx"><span class="mini-click-non">Feedback Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/admin/PaymentReport.aspx"><span class="mini-click-non">Payment Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/admin/paymentMethodReport.aspx"><span class="mini-click-non">Payment Method Report</span></asp:HyperLink>
-
-
-
+                        </li>
+                        <li class="inactive">
+                            <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="#"><span class="mini-click-non">Management     </span><i class="fa fa-angle-down"></i></asp:HyperLink>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/admin/ProductAdmin.aspx"><span class="mini-click-non">Product Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin/PromotionAdmin.aspx"><span class="mini-click-non">Promotion Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/admin/AdminFeedBack.aspx"><span class="mini-click-non">Feedback Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/admin/Delivery.aspx"><span class="mini-click-non">Delivery Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/admin/OrderAdmin.aspx"><span class="mini-click-non">Order Management</span></asp:HyperLink></li>
+                            </ul>
+                        </li>
+                        <li class="inactive">
+                            <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="#"><span class="mini-click-non">Report     </span><i class="fa fa-angle-down"></i></asp:HyperLink>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/admin/productReport.aspx"><span class="mini-click-non">Product Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/admin/feedbackReport.aspx"><span class="mini-click-non">Feedback Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/admin/PaymentReport.aspx"><span class="mini-click-non">Payment Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/admin/paymentMethodReport.aspx"><span class="mini-click-non">Payment Method Report</span></asp:HyperLink>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -153,16 +163,16 @@
                                                         <asp:TextBox ID="editAdminPass" type="password" runat="server" CssClass="form-control" placeholder="Enter New Password"></asp:TextBox>
                                                     </div>
                                                     <div>
-                                                        <asp:RequiredFieldValidator ID="rfvPass" runat="server" ErrorMessage="Please Fill Up Your [Password] !!" ControlToValidate="editAdminPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                                                        <asp:RegularExpressionValidator ID="revPass" runat="server" ErrorMessage="Please enter [Password] with 6-10 characters (at least 1 upper case &amp;amp, lower case, digit and a special character) !!" ControlToValidate="editAdminPass" Display="Dynamic" Font-Bold="True" ForeColor="Red" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*()_+.])[A-Za-z\d!@#$%^&amp;*()_+.]{6,10}$"></asp:RegularExpressionValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvPass" runat="server" ErrorMessage="Please fill up your [Password]" ControlToValidate="editAdminPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="revPass" runat="server" ErrorMessage="Please enter [Password] with 6-10 characters (at least 1 upper case &amp;amp, lower case, digit and a special character)" ControlToValidate="editAdminPass" Display="Dynamic" Font-Bold="True" ForeColor="Red" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*()_+.])[A-Za-z\d!@#$%^&amp;*()_+.]{6,10}$"></asp:RegularExpressionValidator>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <asp:Label ID="lblConfirmPass" runat="server" Text="Confirm Password: " CssClass="input-group-addon"></asp:Label>
                                                         <asp:TextBox ID="editAdminConfirmPass" type="password" runat="server" CssClass="form-control" placeholder="Confirm Password"></asp:TextBox>
                                                     </div>
                                                     <div>
-                                                        <asp:RequiredFieldValidator ID="rfvConfirmPass" runat="server" ErrorMessage="Please Fill Up Your [Password] !!" ControlToValidate="editAdminConfirmPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                                                        <asp:CompareValidator ID="cvPass" runat="server" ErrorMessage="Passwords not match !!" ControlToCompare="editAdminPass" ControlToValidate="editAdminConfirmPass" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:CompareValidator>
+                                                        <asp:RequiredFieldValidator ID="rfvConfirmPass" runat="server" ErrorMessage="Please fill up your [Password]" ControlToValidate="editAdminConfirmPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                                                        <asp:CompareValidator ID="cvPass" runat="server" ErrorMessage="Passwords not match" ControlToCompare="editAdminPass" ControlToValidate="editAdminConfirmPass" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:CompareValidator>
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="text-center custom-pro-edt-ds">

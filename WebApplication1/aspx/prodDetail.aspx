@@ -110,6 +110,7 @@
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <asp:Label ID="lblColor" runat="server"></asp:Label>
                 </div>
+                
                 <p class="text-dark font-weight-medium mb-0 mr-3">Quantity:</p>
                 <div class="d-flex align-items-center mb-4 pt-2">
 
@@ -119,7 +120,9 @@
                     &nbsp;
                     <asp:Button runat="server" ID="AddToCartButton" CssClass="btn btn-primary px-3" Text="Add To Cart" OnClick="AddToCartButton_Click" />
                     <asp:HiddenField ID="hfMaxQty" runat="server" />
+                    
                 </div>
+                <asp:Label ID="lblQuantity" runat="server"></asp:Label>
                 <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Quantity must be at least 1 " MinimumValue="1" MaximumValue="100" Type="Integer" ForeColor="Red" ControlToValidate="txtQty"></asp:RangeValidator>
                 <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="txtQty" ErrorMessage="Quantity exceeds available stock" ForeColor="Red" OnServerValidate="ValidateQuantity" ClientValidationFunction="validateQty"></asp:CustomValidator>
 
@@ -146,82 +149,49 @@
                             <asp:Label ID="lblColor2" runat="server"></asp:Label>
                         </p>
                     </div>
-                    <div class="tab-pane fade" id="tab-pane-2">
-                        <h4 class="mb-3">Additional Information</h4>
-                        <h5>Delivery</h5>
-                        <p>Standard Delivery: 2-3 business days for West Malaysia and 2-5 business days for East Malaysia respectively.</p>
-                        <p>Orders shipped from the UK will take 7-14 business days.</p>
-                        <p>Free Delivery Sitewide</p>
-                        <h5>Returns</h5>
-                        <p>If you change your mind on a purchase, please return your goods to us within 30 days of receiving your order.</p>
-                        <p>All returns must be unworn and unopened, unwashed and undamaged, in their original condition with all original tags attached and/or in their original packaging which must also be undamaged in its original condition.</p>
-                        <p>The original packaging must also be returned in its original condition and must not be marked, labelled, damaged, or taped.</p>
-                        <p>Due to health and hygiene, we do not offer refunds on underwear, swimwear and jewellery piercing products unless faulty. JD Sports Malaysia reserves the right to reject your return should the item, its box or packaging be marked, damaged, or not returned in a saleable condition.</p>
-                        <p>
-                            The following products are classified as Non-Returnable Products:<br />
-                            a. Nike Dunk and Nike Air Force 1<br />
-                            b. All Jordan Footwear<br />
-                            c. New Balance 550, New Balance 530, New Balance 990V6<br />
-                            d. All Yeezy Products<br />
-                            e. All Raffle Products<br />
-                            f. Sport Bra(s)<br />
-                            g. Undergarment(s)<br />
-                            h. Sock(s)<br />
-                            i. Swimwear(s)<br />
-                            j. Bikini(s).<br />
-                        </p>
-                        <p>JD Sports Malaysia reserves the right to modify or include products classified as Non-Refundable including limited time-based restrictions at any time.</p>
-                        <p>With effect from 15 February 2023, JD Sports Malaysia will no longer accept physical returns to the warehouse.</p>
+                                     <div class="tab-pane fade" id="tab-pane-2">
+    <h4 class="mb-3">Additional Information</h4>
+    <h5>Delivery</h5>
+    <p>Standard Delivery: 2-3 business days for West Malaysia and 2-5 business days for East Malaysia respectively.</p>
+    <p>Orders shipped from the UK will take 7-14 business days.</p>
+    <p>Free Delivery Sitewide</p>
+    <h5>Returns</h5>
+    <p>If you change your mind on a purchase, please return your goods to us within 30 days of receiving your order.</p>
+    <p>All returns must be unworn and unopened, unwashed and undamaged, in their original condition with all original tags attached and/or in their original packaging which must also be undamaged in its original condition.</p>
+    <p>The original packaging must also be returned in its original condition and must not be marked, labelled, damaged, or taped.</p>
+    <p>Due to health and hygiene, we do not offer refunds on underwear, swimwear and jewellery piercing products unless faulty. JD Sports Malaysia reserves the right to reject your return should the item, its box or packaging be marked, damaged, or not returned in a saleable condition.</p>
+    <p>
+        The following products are classified as Non-Returnable Products:<br />
+        a. Nike Dunk and Nike Air Force 1<br />
+        b. All Jordan Footwear<br />
+        c. New Balance 550, New Balance 530, New Balance 990V6<br />
+        d. All Yeezy Products<br />
+        e. All Raffle Products<br />
+        f. Sport Bra(s)<br />
+        g. Undergarment(s)<br />
+        h. Sock(s)<br />
+        i. Swimwear(s)<br />
+        j. Bikini(s).<br />
+    </p>
+    <p>JD Sports Malaysia reserves the right to modify or include products classified as Non-Refundable including limited time-based restrictions at any time.</p>
+    <p>With effect from 15 February 2023, JD Sports Malaysia will no longer accept physical returns to the warehouse.</p>
 
-                    </div>
-                </div>
+</div>
                 <div class="tab-pane fade" id="tab-pane-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 class="mb-4">Leave a review</h4>
-                            <small>Your email address will not be published. Required fields are marked *</small>
-                            <div class="d-flex my-3">
-                                <p class="mb-0 mr-2">Your Rating * :</p>
-                                <div class="text-primary">
-                                    <!-- Star rating input here -->
-                                    <asp:DropDownList ID="ratingDropDown" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="false">
-                                        <asp:ListItem Text="Select Rating &#9734;" Value="" Disabled="true" Selected="true"></asp:ListItem>
-                                        <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                        <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                                        <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                                    </asp:DropDownList>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Your Review *</label>
-                                <asp:TextBox ID="message1" runat="server" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" placeholder="Need to purchase before leaving a comment"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Your Name *</label>
-                                <asp:TextBox ID="message2" runat="server" CssClass="form-control" ReadOnly="true" placeholder=""></asp:TextBox>
-                            </div>
-                            <div class="form-group mb-0">
-                                <asp:Button ID="submitReviewBtn" runat="server" Text="Leave Your Review" CssClass="btn btn-primary px-3" Enabled="false" />
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <h4 class="mb-4">View Feedback</h4>
-                            <small>Let's view the feedback of this product</small>
-                            <div class="form-group mb-0">
-                                <asp:Button ID="Button1" runat="server" Text="View Feedback" CssClass="btn btn-primary px-3" OnClick="Feedback_Click" />
-                            </div>
-
-                        </div>
+    <div class="row">
+        <div class="col-md-6">
+           
+               <div class="col-md-6">
+     <h4 class="mb-4">View Feedback</h4>
+     <small>Let's view the feedback of this product</small>
+     <div class="form-group mb-0">
+    <asp:Button ID="Button1" runat="server" Text="View Feedback" CssClass="btn btn-primary px-3"  OnClick="Feedback_Click"/>
+        </div>
+         
+        </div>
+        </div>
                     </div>
-
-                </div>
+                </div>     
             </div>
         </div>
     </div>

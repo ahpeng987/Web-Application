@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\Web-Application\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0624E0F0-1556-43EE-AC1A-A3904042AD32}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\web-application\\webapplication1\\aspx\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0624E0F0-1556-43EE-AC1A-A3904042AD32}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\aspx\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "login.aspx",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Web-Application\\WebApplication1\\aspx\\login.aspx",
+              "RelativeDocumentMoniker": "WebApplication1\\aspx\\login.aspx",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Web-Application\\WebApplication1\\aspx\\login.aspx",
+              "RelativeToolTip": "WebApplication1\\aspx\\login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-16T08:13:39.815Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

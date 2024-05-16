@@ -21,17 +21,17 @@
                     <asp:TextBox ID="editPass" type="password" runat="server" placeholder="Enter New Password" CssClass="username mt-3" Style="text-align: center"></asp:TextBox>
                 </div>
                 <div>
-                    <asp:RequiredFieldValidator ID="rfvPass" runat="server" ErrorMessage="Please Fill Up Your [Password] !!" ControlToValidate="editPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revPass" runat="server" ErrorMessage="Please enter [Password] with 6-10 characters (at least 1 upper case &amp;amp, lower case, digit and a special character) !!" ControlToValidate="editPass" Display="Dynamic" Font-Bold="True" ForeColor="Red" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*()_+.])[A-Za-z\d!@#$%^&amp;*()_+.]{6,10}$"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="rfvPass" runat="server" ErrorMessage="Please fill up your [Password]" ControlToValidate="editPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revPass" runat="server" ErrorMessage="Please enter [Password] with 6-10 characters (at least 1 upper case &amp;amp, lower case, digit and a special character)" ControlToValidate="editPass" Display="Dynamic" Font-Bold="True" ForeColor="Red" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*()_+.])[A-Za-z\d!@#$%^&amp;*()_+.]{6,10}$"></asp:RegularExpressionValidator>
                 </div>
 
                 <div class=" userd-flex mt-2" style="text-align: center">
                     <asp:Label ID="lblConfirmPass" runat="server" Text="Confirm Password" CssClass="useridd"></asp:Label>
-                    <asp:TextBox ID="editConfirmPass" type="password" runat="server" placeholder="Enter Password Again" CssClass="username mt-3" Style="text-align: center"></asp:TextBox>
+                    <asp:TextBox ID="editConfirmPass" type="password" runat="server" placeholder="Comfirm Password" CssClass="username mt-3" Style="text-align: center"></asp:TextBox>
                 </div>
                 <div>
-                    <asp:RequiredFieldValidator ID="rfvConfirmPass" runat="server" ErrorMessage="Please Fill Up Your [Password] !!" ControlToValidate="editConfirmPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                    <asp:CompareValidator ID="cvPass" runat="server" ErrorMessage="Passwords not match !!" ControlToCompare="editPass" ControlToValidate="editConfirmPass" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:CompareValidator>
+                    <asp:RequiredFieldValidator ID="rfvConfirmPass" runat="server" ErrorMessage="Please fill up your [Password] again" ControlToValidate="editConfirmPass" ForeColor="#FF3300" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="cvPass" runat="server" ErrorMessage="Passwords not match" ControlToCompare="editPass" ControlToValidate="editConfirmPass" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:CompareValidator>
                 </div>
 
                 <div class=" userd-flex mt-2">

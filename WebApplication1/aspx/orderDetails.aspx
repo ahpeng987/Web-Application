@@ -17,21 +17,23 @@
                 <div class="col-lg-8 col-xl-6">
                     <div class="card border-top border-bottom border-3" style="border-color: #6F6F6F !important;">
                         <div class="card-body p-5">
-                            <p class="lead fw-bold mb-5 offset-lg-4" style="color: #D19C97;">ORDER DETAILS</p>
-
-
+                            <p class="lead fw-bold mb-5 text-center" style="color: #D19C97;">ORDER DETAILS</p>
 
                             <!-- Display Order Items -->
                             <div>
                                 <asp:Literal ID="litOrderItems" runat="server"></asp:Literal>
                             </div>
-
                             <br />
+
+                            <div class="text-center">
+                                 <p class="m-0">Scan QR Code to download your reciept.</p>
+                                <img id="imgQRCode" runat="server" style="max-width: 100px; height: auto;" />
+                            </div>
 
                             <!-- Display Total Amount -->
                             <div class="row my-4">
-                                <div class="col-md-1 offset-md-8 col-lg-4 offset-lg-9">
-                                    <p class="lead fw-bold mb-0" style="color: #D19C97;">
+                                <div class="col-md-12">
+                                    <p class="lead fw-bold mb-0 text-center" style="color: #D19C97;">
                                         <asp:Label ID="lblTotalAmount" runat="server" CssClass="mb-0"></asp:Label>
                                     </p>
                                 </div>
@@ -39,17 +41,16 @@
 
                             <!-- Track Order Button -->
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <asp:Button ID="btnTrackOrder" runat="server"  CssClass="btn btn-block btn-primary my-3 py-3" Text="Back to order" OnClick="btnTrackOrder_Click" />
+                                <div class="col-lg-6">
+                                    <asp:Button ID="btnTrackOrder" runat="server" CssClass="btn btn-block btn-primary my-3 py-3" Text="Back to order" OnClick="btnTrackOrder_Click" />
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <asp:Button ID="btnConfirmPayment" runat="server" CssClass="btn btn-block btn-primary my-3 py-3" Text="Give a Feedback" OnClick="btnConfirmPayment_Click" />
                                 </div>
                             </div>
 
-
                             <!-- Contact Us Link -->
-                            <p class="mt-4 pt-2 mb-0">Want any help? <a href="#!" style="color: #D19C97;">Please contact us</a></p>
+                            <p class="mt-4 pt-2 mb-0 text-center">Want any help? <a href="#!" style="color: #D19C97;">Please contact us</a></p>
                         </div>
                     </div>
                 </div>

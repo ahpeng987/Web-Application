@@ -21,6 +21,10 @@ namespace WebApplication1.admin
                 string adminname = Session["adminName"].ToString();
                 lblWelcomeMessage.Text = adminname;
             }
+            else
+            {
+                Response.Redirect("../admin/notAdmin.aspx");
+            }
 
             BindOrders();
         }

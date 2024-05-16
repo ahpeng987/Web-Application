@@ -20,6 +20,10 @@ namespace WebApplication1.admin
                 string adminname = Session["adminName"].ToString();
                 lblWelcomeMessage.Text = adminname;
             }
+            else
+            {
+                Response.Redirect("../admin/notAdmin.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -30,7 +34,6 @@ namespace WebApplication1.admin
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-
             if (Page.IsValid && fupPromo1.HasFile)
             {
                 string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
@@ -49,49 +52,60 @@ namespace WebApplication1.admin
 
                     string Description = txtDescription.Text;
                     string Discount = txtDiscount.Text;
-                    DateTime Start = DateTime.Parse(txtStartDate.Text);
-                    DateTime End = DateTime.Parse(txtEndDate.Text);
                     string Original = txtOriPrice.Text;
                     string color = txtpromoColor.Text;
                     string Name = txtProductName.Text;
 
-                    int productID = GetProductIDByName(Name, connectionString);
+                    DateTime Start, End;
+                    string dateFormat = "yyyy-MM-dd"; // Specify your date format
 
-                    if (productID != 0) // Product found
+                    bool isStartDateValid = DateTime.TryParseExact(txtStartDate.Text, dateFormat, null, System.Globalization.DateTimeStyles.None, out Start);
+                    bool isEndDateValid = DateTime.TryParseExact(txtEndDate.Text, dateFormat, null, System.Globalization.DateTimeStyles.None, out End);
+
+                    if (isStartDateValid && isEndDateValid)
                     {
-                        using (SqlConnection con = new SqlConnection(connectionString))
+                        int productID = GetProductIDByName(Name, connectionString);
+
+                        if (productID != 0) // Product found
                         {
-                            try
+                            using (SqlConnection con = new SqlConnection(connectionString))
                             {
-                                con.Open();
-                                string sql = "INSERT INTO Promotion (promoDescript, oriPrice, disPrice, startDate, endDate, promoColor, prodID, promoImg, promoImg2, promoImg3) " +
-                                             "VALUES (@promoDescript, @oriPrice, @disPrice, @startDate, @endDate, @promoColor, @prodID, @promoImg, @promoImg2, @promoImg3)";
+                                try
+                                {
+                                    con.Open();
+                                    string sql = "INSERT INTO Promotion (promoDescript, oriPrice, disPrice, startDate, endDate, promoColor, prodID, promoImg, promoImg2, promoImg3) " +
+                                                 "VALUES (@promoDescript, @oriPrice, @disPrice, @startDate, @endDate, @promoColor, @prodID, @promoImg, @promoImg2, @promoImg3)";
 
-                                SqlCommand cmd = new SqlCommand(sql, con);
-                                cmd.Parameters.AddWithValue("@promoDescript", Description);
-                                cmd.Parameters.AddWithValue("@oriPrice", Original);
-                                cmd.Parameters.AddWithValue("@disPrice", Discount);
-                                cmd.Parameters.AddWithValue("@startDate", Start);
-                                cmd.Parameters.AddWithValue("@endDate", End);
-                                cmd.Parameters.AddWithValue("@promoColor", color);
-                                cmd.Parameters.AddWithValue("@prodID", productID);
-                                cmd.Parameters.AddWithValue("@promoImg", filename1);
-                                cmd.Parameters.AddWithValue("@promoImg2", filename2);
-                                cmd.Parameters.AddWithValue("@promoImg3", filename3);
+                                    SqlCommand cmd = new SqlCommand(sql, con);
+                                    cmd.Parameters.AddWithValue("@promoDescript", Description);
+                                    cmd.Parameters.AddWithValue("@oriPrice", Original);
+                                    cmd.Parameters.AddWithValue("@disPrice", Discount);
+                                    cmd.Parameters.AddWithValue("@startDate", Start);
+                                    cmd.Parameters.AddWithValue("@endDate", End);
+                                    cmd.Parameters.AddWithValue("@promoColor", color);
+                                    cmd.Parameters.AddWithValue("@prodID", productID);
+                                    cmd.Parameters.AddWithValue("@promoImg", filename1);
+                                    cmd.Parameters.AddWithValue("@promoImg2", filename2);
+                                    cmd.Parameters.AddWithValue("@promoImg3", filename3);
 
-                                cmd.ExecuteNonQuery();
+                                    cmd.ExecuteNonQuery();
 
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Promotion created successfully.'); window.location ='PromotionAdmin.aspx';", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Promotion created successfully.'); window.location ='PromotionAdmin.aspx';", true);
+                                }
+                                catch (Exception ex)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('An error occurred while creating the promotion: " + ex.Message + "');", true);
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('An error occurred while creating the promotion: " + ex.Message + "');", true);
-                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Product with name \"" + Name + "\" not found.');", true);
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Product with name \"" + Name + "\" not found.');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please enter valid dates in the format " + dateFormat + ".');", true);
                     }
                 }
                 else

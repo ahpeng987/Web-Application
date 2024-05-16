@@ -19,6 +19,10 @@ namespace WebApplication1.admin
                 string adminname = Session["adminName"].ToString();
                 lblWelcomeMessage.Text = adminname;
             }
+            else
+            {
+                Response.Redirect("../admin/notAdmin.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -77,8 +81,18 @@ namespace WebApplication1.admin
 
                     if (rowsAffected > 0)
                     {
+
+
+                        string notificationMessage = $"Delivery status updated to: {newStatus}";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showNotification", $"showDesktopNotification('{notificationMessage}')", true);
+
+
+
                         // Redirect back to Delivery.aspx after successful update
                         Response.Redirect("Delivery.aspx");
+
+
+
                     }
                     else
                     {

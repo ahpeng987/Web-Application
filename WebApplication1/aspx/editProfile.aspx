@@ -21,18 +21,18 @@
                     <asp:TextBox ID="editName" runat="server" Text="<%= userName %>" CssClass="username mt-3" Style="text-align: center"></asp:TextBox>
                 </div>
                 <div>
-                    <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ErrorMessage="Please Fill Up Your Username !!" ControlToValidate="editName" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revUsername" runat="server" ErrorMessage="Please Enter Alphabet Only !!" ControlToValidate="editName" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
-                    <asp:CustomValidator ID="cvUsername" runat="server" ErrorMessage="This [Username] has been used !!" Display="Dynamic" ControlToValidate="editName" Font-Bold="True" ForeColor="Red" OnServerValidate="cvUsername_ServerValidate"></asp:CustomValidator>
+                    <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ErrorMessage="Please fill up your [Username]" ControlToValidate="editName" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revUsername" runat="server" ErrorMessage="Please enter alphabet only" ControlToValidate="editName" ForeColor="Red" ValidationExpression="^[a-zA-Z\s]+$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
+                    <asp:CustomValidator ID="cvUsername" runat="server" ErrorMessage="This [Username] has been used" Display="Dynamic" ControlToValidate="editName" Font-Bold="True" ForeColor="Red" OnServerValidate="cvUsername_ServerValidate"></asp:CustomValidator>
                 </div>
                 <div class=" userd-flex mt-2" style="text-align: center">
                     <asp:Label ID="lblEmail" runat="server" Text="Email" CssClass="useridd"></asp:Label>
                     <asp:TextBox ID="editEmail" runat="server" Text="<%= userEmail %>" CssClass="username mt-3" Style="text-align: center"></asp:TextBox>
                 </div>
                 <div>
-                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please Fill Up Your [Email] !!" ControlToValidate="editEmail" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please enter [Email] with &quot;@&quot; !!" ControlToValidate="editEmail" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
-                    <asp:CustomValidator ID="cvEmail" runat="server" ErrorMessage="This [Email] has been used !!" ControlToValidate="editEmail" Display="Dynamic" Font-Bold="True" ForeColor="Red" OnServerValidate="cvEmail_ServerValidate"></asp:CustomValidator>
+                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Please fill up your [Email] " ControlToValidate="editEmail" ForeColor="Red" Display="Dynamic" Font-Bold="True"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please enter [Email] with &quot;@&quot; " ControlToValidate="editEmail" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" Font-Bold="True"></asp:RegularExpressionValidator>
+                    <asp:CustomValidator ID="cvEmail" runat="server" ErrorMessage="This [Email] has been used" ControlToValidate="editEmail" Display="Dynamic" Font-Bold="True" ForeColor="Red" OnServerValidate="cvEmail_ServerValidate"></asp:CustomValidator>
                 </div>
                 <div class=" userd-flex mt-2">
                     <asp:Button ID="updateBtn" runat="server" CssClass="userbtn1 btn-dark" Text="Update" OnClick="updateBtn_Click" />

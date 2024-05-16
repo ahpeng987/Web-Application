@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="admin/css/font-awesome.min.css">
     <!-- nalika Icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="admin/css/nalika-icon.css">
+    <%--<link rel="stylesheet" href="admin/css/nalika-icon.css">--%>
     <!-- owl.carousel CSS
 		============================================ -->
     <link rel="stylesheet" href="admin/css/owl.carousel.css">

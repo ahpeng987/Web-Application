@@ -122,7 +122,9 @@
                                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/aspx/product.aspx" Text="Shop" CssClass="nav-item nav-link" />
                                     <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/aspx/promotion.aspx" Text="Promotion" CssClass="nav-item nav-link" />
                                     <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/aspx/contact.aspx" Text="Contact" CssClass="nav-item nav-link" />
+                                     <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/aspx/viewFeedback.aspx" Text="Feedback" CssClass="nav-item nav-link"/>
                                     <asp:HyperLink ID="profile" runat="server" NavigateUrl="~/aspx/userProfile.aspx" Text="Profile" CssClass="nav-item nav-link" Visible="false"/>
+
                                 </div>
                                 <div class="navbar-nav ml-auto py-0">
 
@@ -162,6 +164,7 @@
                                     <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/aspx/product.aspx" CssClass="text-dark mb-2"><i class="fa fa-angle-right mr-2"></i>Our Shop</asp:HyperLink>
                                     <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/aspx/promotion.aspx" CssClass="text-dark mb-2"><i class="fa fa-angle-right mr-2"></i>Promotion</asp:HyperLink>
                                     <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/aspx/contact.aspx" CssClass="text-dark"><i class="fa fa-angle-right mr-2"></i>Contact Us</asp:HyperLink>
+                                   
                                 </div>
 
                             </div>

@@ -168,42 +168,6 @@ namespace WebApplication1.aspx
         protected global::System.Web.UI.WebControls.Label lblColor2;
 
         /// <summary>
-        /// ratingDropDown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ratingDropDown;
-
-        /// <summary>
-        /// message1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox message1;
-
-        /// <summary>
-        /// message2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox message2;
-
-        /// <summary>
-        /// submitReviewBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submitReviewBtn;
-
-        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>

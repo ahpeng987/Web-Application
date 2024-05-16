@@ -22,7 +22,7 @@ namespace WebApplication1.admin
             }
             else
             {
-
+                Response.Redirect("../admin/notAdmin.aspx");
             }
 
             if (!IsPostBack)

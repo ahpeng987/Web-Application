@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="AddOrder.aspx.cs" Inherits="WebApplication1.admin.AddOrder1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <!-- favicon
+    <!-- favicon
 	============================================ -->
     <link rel="shortcut icon" type="admin/image/x-icon" href="admin/img/favicon.ico">
     <!-- Google Fonts
@@ -73,7 +74,6 @@
                     <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="editAdminProfile.aspx" title="Edit Profile">
                     <img src="img/profile.jpg" alt=""/>
                     </asp:HyperLink>
-                    <%--<h2>Lakian <span class="min-dtn">Das</span></h2>--%>
                     <br />
                     <asp:Label ID="lblWelcomeMessage" runat="server" Text="<%= adminName %>" Font-Bold="True" Font-Italic="False" Font-Names="Georgia" Font-Size="Larger"></asp:Label>
                 </div>
@@ -89,20 +89,31 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li class="active">
-
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/admin/dashboard.aspx"><span class="mini-click-non">Dashboard</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/admin/ProductAdmin.aspx"><span class="mini-click-non">Product Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin/PromotionAdmin.aspx"><span class="mini-click-non">Promotion Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/admin/AdminFeedBack.aspx"><span class="mini-click-non">Feedback Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/admin/Delivery.aspx"><span class="mini-click-non">Delivery Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/admin/OrderAdmin.aspx"><span class="mini-click-non">Order Management</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/admin/productReport.aspx"><span class="mini-click-non">Product Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/admin/feedbackReport.aspx"><span class="mini-click-non">Feedback Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/admin/PaymentReport.aspx"><span class="mini-click-non">Payment Report</span></asp:HyperLink>
-                            <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/admin/paymentMethodReport.aspx"><span class="mini-click-non">Payment Method Report</span></asp:HyperLink>
-
-
-
+                        </li>
+                        <li class="inactive">
+                            <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="#"><span class="mini-click-non">Management     </span><i class="fa fa-angle-down"></i></asp:HyperLink>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/admin/ProductAdmin.aspx"><span class="mini-click-non">Product Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin/PromotionAdmin.aspx"><span class="mini-click-non">Promotion Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/admin/AdminFeedBack.aspx"><span class="mini-click-non">Feedback Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/admin/Delivery.aspx"><span class="mini-click-non">Delivery Management</span></asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/admin/OrderAdmin.aspx"><span class="mini-click-non">Order Management</span></asp:HyperLink></li>
+                            </ul>
+                        </li>
+                        <li class="inactive">
+                            <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="#"><span class="mini-click-non">Report     </span><i class="fa fa-angle-down"></i></asp:HyperLink>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/admin/productReport.aspx"><span class="mini-click-non">Product Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/admin/feedbackReport.aspx"><span class="mini-click-non">Feedback Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/admin/PaymentReport.aspx"><span class="mini-click-non">Payment Report</span></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/admin/paymentMethodReport.aspx"><span class="mini-click-non">Payment Method Report</span></asp:HyperLink>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -129,83 +140,82 @@
             </div>
         </div>
 
-         <div class="container" >
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-primary">
-                    <div class="panel-heading" style="background-color: Black; color: white;">
-                        <h3>Add New Order</h3>
-                    </div>
-                    <div class="panel-body" style="background-color: Black;">
-                        <asp:DropDownList ID="ddlProducts" runat="server" CssClass="form-control" placeholder="Select Product"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlUsers" runat="server" CssClass="form-control" placeholder="Select User"></asp:DropDownList>
-                        <asp:TextBox ID="txtPaymentMethod" runat="server" CssClass="form-control" placeholder="Payment Method"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPaymentMethod" ErrorMessage="Please enter a value!" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="txtOrderQty" runat="server" CssClass="form-control" placeholder="Order Quantity"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtOrderQty" ErrorMessage="Please enter a value!" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
-                        <asp:Button ID="btnCalculate" runat="server" Text="Calculate" OnClick="btnCalculate_Click" CssClass="btn btn-primary btn-block" />
-                        <br />
-                        <div class="form-group">
-                            <label for="lblUnitPrice" style= "color: white;">Unit Price:</label>
-                            <asp:Label ID="lblUnitPrice" runat="server" CssClass="form-control"></asp:Label>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" style="background-color: Black; color: white;">
+                            <h3>Add New Order</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="lblTotalAmt" style= "color: white;">Total Amount:</label>
-                            <asp:Label ID="lblTotalAmt" runat="server" CssClass="form-control"></asp:Label>
+                        <div class="panel-body" style="background-color: Black;">
+                            <asp:DropDownList ID="ddlProducts" runat="server" CssClass="form-control" placeholder="Select Product"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlUsers" runat="server" CssClass="form-control" placeholder="Select User"></asp:DropDownList>
+                            <asp:TextBox ID="txtPaymentMethod" runat="server" CssClass="form-control" placeholder="Payment Method"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPaymentMethod" ErrorMessage="Please enter a value!" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtOrderQty" runat="server" CssClass="form-control" placeholder="Order Quantity"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtOrderQty" ErrorMessage="Please enter a value!" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+                            <asp:Button ID="btnCalculate" runat="server" Text="Calculate" OnClick="btnCalculate_Click" CssClass="btn btn-primary btn-block" />
+                            <br />
+                            <div class="form-group">
+                                <label for="lblUnitPrice" style="color: white;">Unit Price:</label>
+                                <asp:Label ID="lblUnitPrice" runat="server" CssClass="form-control"></asp:Label>
+                            </div>
+                            <div class="form-group">
+                                <label for="lblTotalAmt" style="color: white;">Total Amount:</label>
+                                <asp:Label ID="lblTotalAmt" runat="server" CssClass="form-control"></asp:Label>
+                            </div>
+                            <asp:Button ID="btnAddOrder" runat="server" Text="Add Order" OnClick="btnAddOrder_Click" OnClientClick="return confirm('Are you sure you want to add Order?');" CssClass="btn btn-success btn-block" />
                         </div>
-                        <asp:Button ID="btnAddOrder" runat="server" Text="Add Order" OnClick="btnAddOrder_Click" OnClientClick="return confirm('Are you sure you want to add Order?');" CssClass="btn btn-success btn-block" />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-         <!-- jquery
+        <!-- jquery
 	============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <!-- bootstrap JS
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- bootstrap JS
 	============================================ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow JS
+        <script src="js/bootstrap.min.js"></script>
+        <!-- wow JS
 	============================================ -->
-    <script src="js/wow.min.js"></script>
-    <!-- price-slider JS
+        <script src="js/wow.min.js"></script>
+        <!-- price-slider JS
 	============================================ -->
-    <script src="js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
+        <script src="js/jquery-price-slider.js"></script>
+        <!-- meanmenu JS
 	============================================ -->
-    <script src="js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
+        <script src="js/jquery.meanmenu.js"></script>
+        <!-- owl.carousel JS
 	============================================ -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- sticky JS
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- sticky JS
 	============================================ -->
-    <script src="js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
+        <script src="js/jquery.sticky.js"></script>
+        <!-- scrollUp JS
 	============================================ -->
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <!-- mCustomScrollbar JS
 	============================================ -->
-    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
+        <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
+        <!-- metisMenu JS
 	============================================ -->
-    <script src="js/metisMenu/metisMenu.min.js"></script>
-    <script src="js/metisMenu/metisMenu-active.js"></script>
-    <!-- morrisjs JS
+        <script src="js/metisMenu/metisMenu.min.js"></script>
+        <script src="js/metisMenu/metisMenu-active.js"></script>
+        <!-- morrisjs JS
 	============================================ -->
-    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
-    <!-- calendar JS
+        <script src="js/sparkline/jquery.sparkline.min.js"></script>
+        <script src="js/sparkline/jquery.charts-sparkline.js"></script>
+        <!-- calendar JS
 	============================================ -->
-    <script src="js/calendar/moment.min.js"></script>
-    <script src="js/calendar/fullcalendar.min.js"></script>
-    <script src="js/calendar/fullcalendar-active.js"></script>
-    <!-- plugins JS
+        <script src="js/calendar/moment.min.js"></script>
+        <script src="js/calendar/fullcalendar.min.js"></script>
+        <script src="js/calendar/fullcalendar-active.js"></script>
+        <!-- plugins JS
 	============================================ -->
-    <script src="js/plugins.js"></script>
-    <!-- main JS
+        <script src="js/plugins.js"></script>
+        <!-- main JS
 	============================================ -->
-    <script src="js/main.js"></script>
-
+        <script src="js/main.js"></script>
 </asp:Content>

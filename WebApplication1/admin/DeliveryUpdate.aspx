@@ -1,6 +1,61 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="DeliveryUpdate.aspx.cs" Inherits="WebApplication1.admin.DeliveryUpdate" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+   <script>
+       // Function to confirm update and notify
+       function confirmAndNotify() {
+           if (confirm('Confirm Update?')) {
+               // Get the selected delivery status from the dropdown list
+               var newStatus = document.getElementById('<%= ddlDeliveryStatus.ClientID %>').value;
+               var orderId = getParameterByName('OrderID'); // Get the order ID from query string
+               var message =  "Order: " + orderId + "   Delivery status updated to: " + newStatus;
+
+               // Show desktop notification
+               showDesktopNotification(message);
+
+ 
+
+               // Allow the button click (perform postback)
+               return true;
+           } else {
+               // Cancel the button click (do not perform postback)
+               return false;
+           }
+       }
+
+       // Function to show desktop notification
+       function showDesktopNotification(message) {
+           // Check if the browser supports notifications
+           if (!("Notification" in window)) {
+               alert("This browser does not support desktop notifications");
+           } else if (Notification.permission === "granted") {
+               // If notification permission is granted, show the notification
+               var notification = new Notification("Delivery Status Updated", { body: message });
+           } else if (Notification.permission !== 'denied') {
+               // Request permission from the user
+               Notification.requestPermission().then(function (permission) {
+                   if (permission === "granted") {
+                       var notification = new Notification("Delivery Status Updated", { body: message });
+                   }
+               });
+           }
+       }
+
+       // Function to extract query string parameter by name
+       function getParameterByName(name, url) {
+           if (!url) url = window.location.href;
+           name = name.replace(/[\[\]]/g, '\\$&');
+           var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+               results = regex.exec(url);
+           if (!results) return null;
+           if (!results[2]) return '';
+           return decodeURIComponent(results[2].replace(/\+/g, ' '));
+       }
+
+
+   </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- favicon
@@ -139,7 +194,8 @@
                     <asp:ListItem Text="Delivered" Value="Delivered"></asp:ListItem>
                     <asp:ListItem Text="Failed" Value="Failed"></asp:ListItem>
                 </asp:DropDownList>
-                <asp:Button ID="btnSave" runat="server" Text="Save Changes" OnClick="btnSave_Click" OnClientClick="return confirm('Confirm Update?');" CssClass="btn btn-primary btn-block mt-3" />
+                <asp:Button ID="btnSave" runat="server" Text="Save Changes" OnClick="btnSave_Click" OnClientClick="return confirmAndNotify();" CssClass="btn btn-primary btn-block mt-3" />
+
             </div>
         </div>
     </div>

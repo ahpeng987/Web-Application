@@ -33,6 +33,15 @@ namespace WebApplication1.aspx
         protected global::System.Web.UI.HtmlControls.HtmlForm registerForm;
 
         /// <summary>
+        /// lblname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblname;
+
+        /// <summary>
         /// regUsername control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace WebApplication1.aspx
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvUsername;
+
+        /// <summary>
+        /// lblEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
         /// regEmail control.
@@ -105,6 +123,15 @@ namespace WebApplication1.aspx
         protected global::System.Web.UI.WebControls.CustomValidator cvEmail;
 
         /// <summary>
+        /// lblPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPass;
+
+        /// <summary>
         /// regPass control.
         /// </summary>
         /// <remarks>
@@ -130,6 +157,15 @@ namespace WebApplication1.aspx
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revPass;
+
+        /// <summary>
+        /// lblConfirmPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConfirmPass;
 
         /// <summary>
         /// regConfirmPass control.
